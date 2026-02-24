@@ -1,0 +1,38 @@
+name: Update Global Moods
+on:
+  schedule:
+    - cron: '0 */4 * * *' # Every 4 hours (Free tier limit optimization)
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  analyze-and-update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Mood Analysis
+        env:
+          GEMINI_API_KEY: ${{ secrets.PULSE_API }}
+        run: node scripts/analyze-mood.cjs
+
+      - name: Sync data to Cloudflare R2
+        run: |
+          # Sync everything in public/data to the bucket
+          # --endpoint-url uses the R2 custom endpoint
+          # --region auto is required for R2
+          aws s3 sync public/data/ s3://thepulse/data/ --endpoint-url ${{ secrets.R2_ENDPOINT }} --region auto
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}

@@ -1,0 +1,45 @@
+{
+  "countryCode": "UK",
+  "updatedAt": "2026-02-24T07:00:00.000Z",
+  "mood": "Conflict",
+  "bpm": 130,
+  "color": "#FF4500",
+  "translations": {
+    "en": {
+      "word": "Crime",
+      "subTopics": [
+        "Public Safety",
+        "Law Enforcement",
+        "Criminal Justice",
+        "Systemic Failures",
+        "Violent Crime"
+      ],
+      "reason": "The United Kingdom is currently grappling with a heightened focus on crime and public safety, driven by a series of high-profile incidents and systemic failures. Recent headlines detail ongoing inquiries into major attacks, such as those in Nottingham, alongside revelations of critical failures in public transport CCTV systems that have allowed serious offenders to evade justice. This situation is uniquely significant in the UK, where public trust in law enforcement and the efficacy of public safety infrastructure is being severely tested, prompting widespread national debate on accountability and the future of community security.",
+      "country": "United Kingdom"
+    },
+    "ko": {
+      "word": "범죄",
+      "subTopics": [
+        "공공 안전",
+        "법 집행",
+        "형사 사법",
+        "시스템 결함",
+        "강력 범죄"
+      ],
+      "reason": "영국은 현재 일련의 중대한 사건들과 시스템적 결함으로 인해 범죄 및 공공 안전에 대한 관심이 고조되고 있습니다. 최근 헤드라인은 노팅엄 공격과 같은 주요 사건에 대한 지속적인 조사와 함께, 심각한 범죄자들이 추적되지 않도록 허용한 대중교통 CCTV 시스템의 치명적인 결함에 대한 폭로를 상세히 다루고 있습니다. 이러한 상황은 법 집행에 대한 대중의 신뢰와 공공 안전 인프라의 효율성이 심각하게 시험받고 있는 영국에서 특히 중요하며, 책임과 지역사회 안전의 미래에 대한 광범위한 국가적 논쟁을 촉발하고 있는 상황입니다.",
+      "country": "영국"
+    },
+    "ja": {
+      "word": "犯罪",
+      "subTopics": [
+        "公共安全",
+        "法執行",
+        "刑事司法",
+        "システム障害",
+        "凶悪犯罪"
+      ],
+      "reason": "英国では現在、一連の重大な事件とシステム上の不備により、犯罪と公共の安全に対する関心が高まっています。最近のヘッドラインでは、ノッティンガムでの攻撃のような主要事件に関する継続的な調査に加え、重大な犯罪者が追跡されないままになっている公共交通機関のCCTVシステムの致命的な欠陥が明らかになっています。この状況は、法執行機関への国民の信頼と公共安全インフラの有効性が厳しく問われている英国において特に重要であり、説明責任と地域社会の安全の将来に関する広範な国民的議論を引き起こしています。",
+      "country": "英国"
+    }
+  }
+}

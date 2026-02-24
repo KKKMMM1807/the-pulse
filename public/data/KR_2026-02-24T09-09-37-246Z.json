@@ -1,0 +1,45 @@
+{
+  "countryCode": "KR",
+  "updatedAt": "2026-02-24T09:00:00.000Z",
+  "mood": "Conflict",
+  "bpm": 130,
+  "color": "#8B0000",
+  "translations": {
+    "en": {
+      "word": "Political Corruption",
+      "subTopics": [
+        "Bribery",
+        "Campaign Finance",
+        "Ethical Governance",
+        "Public Trust",
+        "Unification Church Scandal"
+      ],
+      "reason": "South Korea is currently grappling with a series of high-profile political corruption scandals, a recurring challenge in its democratic development. These headlines specifically highlight investigations into illicit campaign funding, such as 'nomination funds,' and alleged influence peddling involving religious organizations like the Unification Church. This ongoing scrutiny reflects the nation's persistent efforts to enhance ethical governance and restore public trust, which are critical for its maturing democracy and economic stability.",
+      "country": "South Korea"
+    },
+    "ko": {
+      "word": "정치부패",
+      "subTopics": [
+        "뇌물수수",
+        "공천헌금",
+        "윤리정치",
+        "국민신뢰",
+        "통일교의혹"
+      ],
+      "reason": "대한민국은 민주주의 발전 과정에서 반복적으로 불거지는 정치부패 문제에 직면해 있습니다. 최근 헤드라인은 '공천 헌금'과 같은 불법 선거 자금 수수 의혹, 그리고 통일교와 같은 종교 단체와의 유착을 통한 영향력 행사 의혹에 대한 수사를 집중적으로 다루고 있습니다. 이러한 지속적인 감시와 수사는 투명하고 윤리적인 정치 시스템을 확립하고 국민의 신뢰를 회복하려는 한국 사회의 노력을 보여주는 상황입니다.",
+      "country": "대한민국"
+    },
+    "ja": {
+      "word": "政治腐敗",
+      "subTopics": [
+        "贈収賄",
+        "選挙資金",
+        "倫理政治",
+        "国民の信頼",
+        "統一教会疑惑"
+      ],
+      "reason": "韓国は、民主主義の発展過程で繰り返し浮上する政治腐敗の問題に直面しています。最近のヘッドラインは、「公認献金」のような違法な選挙資金の授受疑惑や、統一教会のような宗教団体との癒着を通じた影響力行使疑惑に対する捜査に焦点を当てています。このような継続的な監視と捜査は、透明で倫理的な政治システムを確立し、国民の信頼を回復しようとする韓国社会の努力を反映しています。",
+      "country": "韓国"
+    }
+  }
+}

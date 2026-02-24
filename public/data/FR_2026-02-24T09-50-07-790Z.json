@@ -1,0 +1,45 @@
+{
+  "countryCode": "FR",
+  "updatedAt": "2026-02-24T09:00:00.000Z",
+  "mood": "Conflict",
+  "bpm": 145,
+  "color": "#2C3E50",
+  "translations": {
+    "en": {
+      "word": "Ukraine Policy",
+      "subTopics": [
+        "Macron's statements",
+        "European security",
+        "Military aid",
+        "Strategic autonomy",
+        "Russian aggression"
+      ],
+      "reason": "France, under President Macron, has recently adopted a significantly more assertive and proactive stance regarding the conflict in Ukraine, moving beyond traditional diplomatic support to openly discussing the possibility of direct military intervention. This shift marks a pivotal moment in French foreign policy, challenging the nation's post-Cold War strategic autonomy and potentially redefining its role as a leading European power. The debate surrounding potential troop deployment and increased military aid is deeply intertwined with France's historical commitment to European security and its ambition to lead a stronger, more independent European defense. This heightened rhetoric reflects a strategic calculation by Paris to deter further Russian aggression and galvanize European resolve, positioning France at the forefront of a critical geopolitical challenge.",
+      "country": "France"
+    },
+    "ko": {
+      "word": "우크라이나 정책",
+      "subTopics": [
+        "마크롱 발언",
+        "유럽 안보",
+        "군사 지원",
+        "전략적 자율성",
+        "러시아 침공"
+      ],
+      "reason": "프랑스는 최근 마크롱 대통령의 주도로 우크라이나 분쟁에 대한 기존의 외교적 지원을 넘어 직접적인 군사 개입 가능성을 공개적으로 논의하며 훨씬 더 단호하고 적극적인 입장을 취하고 있습니다. 이러한 변화는 프랑스 외교 정책의 중대한 전환점으로, 냉전 이후 국가의 전략적 자율성에 도전하며 유럽 주요 강대국으로서의 역할을 재정의할 가능성을 내포합니다. 잠재적 병력 배치와 군사 지원 증대에 대한 논의는 유럽 안보에 대한 프랑스의 역사적 약속과 더 강력하고 독립적인 유럽 방위를 주도하려는 야망과 깊이 연결되어 있습니다. 이러한 고조된 수사는 러시아의 추가 침략을 억제하고 유럽의 결의를 강화하려는 파리의 전략적 계산을 반영하며, 프랑스를 중요한 지정학적 도전의 최전선에 세우고 있습니다.",
+      "country": "프랑스"
+    },
+    "ja": {
+      "word": "ウクライナ政策",
+      "subTopics": [
+        "マクロン発言",
+        "欧州安全保障",
+        "軍事支援",
+        "戦略的自律性",
+        "ロシア侵攻"
+      ],
+      "reason": "フランスは、マクロン大統領の主導により、ウクライナ紛争に対する従来の外交的支援を超え、直接的な軍事介入の可能性を公然と議論するなど、より断固とした積極的な姿勢を最近採用しています。この変化は、フランス外交政策における極めて重要な転換点であり、冷戦後の国家の戦略的自律性に挑戦し、欧州主要国としての役割を再定義する可能性を秘めています。潜在的な部隊派遣と軍事援助の増強に関する議論は、欧州の安全保障に対するフランスの歴史的なコミットメントと、より強力で独立した欧州防衛を主導しようとする野心と深く結びついています。この高まったレトリックは、ロシアのさらなる侵略を抑止し、欧州の決意を活性化させるというパリの戦略的計算を反映しており、フランスを重要な地政学的課題の最前線に位置づけています。",
+      "country": "フランス"
+    }
+  }
+}

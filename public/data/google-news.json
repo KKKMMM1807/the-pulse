@@ -1,0 +1,33 @@
+{
+    "sentiment": "Innovation",
+    "updatedAt": "2026-02-24T08:00:00.000Z",
+    "translations": {
+        "en": {
+            "title": "GOOGLE CORP.",
+            "headlines": [
+                "Google announces major AI integration across Workspace products.",
+                "Alphabet's Cloud revenue continues to grow at double-digit rates.",
+                "New innovations in DeepMind are setting the pace for LLM research."
+            ],
+            "footer": "Updated daily at 08:00 KST"
+        },
+        "ko": {
+            "title": "GOOGLE의 소식은?",
+            "headlines": [
+                "구글, 워크스페이스 전반에 대규모 AI 통합 발표",
+                "알파벳 클라우드 수익률 두 자릿수 성장세 지속",
+                "딥마인드의 새로운 혁신으로 거대언어모델(LLM) 연구 가속화"
+            ],
+            "footer": "매일 오전 08:00 (KST) 업데이트"
+        },
+        "ja": {
+            "title": "GOOGLEの最新ニュース",
+            "headlines": [
+                "Google、Workspace製品へのAI大規模統合を発表",
+                "Alphabetのクラウド事業、2桁成長を維持",
+                "DeepMindの新技術によりLLM研究がさらに加速"
+            ],
+            "footer": "毎日午前 08:00 (KST) 更新"
+        }
+    }
+}

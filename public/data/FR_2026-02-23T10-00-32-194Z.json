@@ -1,0 +1,44 @@
+{
+  "countryCode": "FR",
+  "mood": "Conflict",
+  "bpm": 130,
+  "color": "#CC0000",
+  "translations": {
+    "en": {
+      "word": "Conflict",
+      "subTopics": [
+        "#UkraineWar",
+        "#RussiaThreats",
+        "#GeopoliticalTension",
+        "#TradeWars",
+        "#GlobalInstability"
+      ],
+      "reason": "The headlines frequently mention the ongoing war in Ukraine, Russian actions, and their global implications, including nuclear threats. Additionally, international trade tensions and political conflicts in other regions contribute to a mood of global instability and confrontation.",
+      "country": "France"
+    },
+    "ko": {
+      "word": "갈등",
+      "subTopics": [
+        "#우크라이나전쟁",
+        "#러시아위협",
+        "#지정학적긴장",
+        "#무역전쟁",
+        "#글로벌불안정"
+      ],
+      "reason": "헤드라인은 우크라이나 전쟁, 러시아의 행동, 핵 위협을 포함한 전 세계적 영향에 대해 자주 언급합니다. 또한, 국제 무역 긴장과 다른 지역의 정치적 갈등은 전반적인 세계 불안정과 대립의 분위기를 조성합니다.",
+      "country": "프랑스"
+    },
+    "ja": {
+      "word": "紛争",
+      "subTopics": [
+        "#ウクライナ戦争",
+        "#ロシアの脅威",
+        "#地政学的緊張",
+        "#貿易戦争",
+        "#世界情勢不安"
+      ],
+      "reason": "見出しは、ウクライナでの継続的な戦争、ロシアの行動、核の脅威を含む世界的な影響について頻繁に言及しています。さらに、国際的な貿易摩擦や他地域の政治的紛争が、世界的な不安定と対立の雰囲気を醸成しています。",
+      "country": "フランス"
+    }
+  }
+}

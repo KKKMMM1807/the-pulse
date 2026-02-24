@@ -1,0 +1,45 @@
+{
+  "countryCode": "JP",
+  "updatedAt": "2026-02-24T09:00:00.000Z",
+  "mood": "Conflict",
+  "bpm": 130,
+  "color": "#FF4500",
+  "translations": {
+    "en": {
+      "word": "Budget",
+      "subTopics": [
+        "Fiscal Policy",
+        "Consumption Tax",
+        "Economic Stimulus",
+        "Government Spending",
+        "Yen Depreciation"
+      ],
+      "reason": "Japan is currently grappling with intense political debates surrounding its national budget and fiscal policy. Following the recent general election, the Diet is engaged in a critical 'struggle' to finalize the budget by March, with discussions heavily focused on 'proactive fiscal policy' and potential 'consumption tax reduction'. This comes amidst persistent concerns over the yen's depreciation and its impact on the economy, making the government's financial strategy a central point of contention and a key determinant for Japan's economic outlook.",
+      "country": "Japan"
+    },
+    "ko": {
+      "word": "예산",
+      "subTopics": [
+        "재정정책",
+        "소비세인하",
+        "경제부양책",
+        "정부지출",
+        "엔화약세"
+      ],
+      "reason": "일본은 현재 국가 예산과 재정 정책을 둘러싼 치열한 정치적 논쟁에 직면해 있습니다. 최근 총선 이후, 국회는 3월까지 예산안을 확정하기 위한 중요한 '공방'을 벌이고 있으며, '적극 재정'과 잠재적인 '소비세 인하'에 대한 논의가 집중되고 있습니다. 이는 지속적인 엔화 약세와 경제에 미치는 영향에 대한 우려가 커지는 가운데, 정부의 재정 전략이 핵심 쟁점이자 일본 경제 전망의 주요 결정 요인이 되고 있는 상황입니다.",
+      "country": "일본"
+    },
+    "ja": {
+      "word": "予算",
+      "subTopics": [
+        "財政政策",
+        "消費減税",
+        "経済対策",
+        "政府支出",
+        "円安"
+      ],
+      "reason": "日本は現在、国家予算と財政政策を巡る激しい政治論争に直面しています。衆院選後初の代表質問では、「積極財政」や「消費減税」が主要な論点となり、3月までの予算成立に向けた攻防が繰り広げられています。これは、継続する円安と経済への影響に対する懸念が高まる中で、政府の財政戦略が日本経済の先行きを左右する重要な争点となっているためです。",
+      "country": "日本"
+    }
+  }
+}

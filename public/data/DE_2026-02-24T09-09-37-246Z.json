@@ -1,0 +1,45 @@
+{
+  "countryCode": "DE",
+  "updatedAt": "2026-02-24T09:00:00.000Z",
+  "mood": "Conflict",
+  "bpm": 130,
+  "color": "#CC5500",
+  "translations": {
+    "en": {
+      "word": "Tariffs",
+      "subTopics": [
+        "Trade wars",
+        "China relations",
+        "German industry",
+        "Export economy",
+        "Supply chains"
+      ],
+      "reason": "Germany, as a highly export-oriented nation with a strong industrial base, is acutely sensitive to global trade policies. The recent headlines highlighting \"new tariff threats\" directly impact its economic stability and future growth prospects. Furthermore, the discussion around German DAX company leaders engaging with China, potentially shifting production, underscores Germany's complex and critical economic relationship with China, which is now being re-evaluated amidst geopolitical tensions and protectionist trends. This situation forces Germany to navigate a delicate balance between maintaining its industrial competitiveness and adapting to a changing global trade landscape.",
+      "country": "Germany"
+    },
+    "ko": {
+      "word": "관세",
+      "subTopics": [
+        "무역 전쟁",
+        "중국 관계",
+        "독일 산업",
+        "수출 경제",
+        "공급망"
+      ],
+      "reason": "독일은 강력한 산업 기반을 가진 고도로 수출 지향적인 국가로서, 글로벌 무역 정책에 매우 민감합니다. 최근 '새로운 관세 위협'에 대한 헤드라인은 독일의 경제 안정과 미래 성장 전망에 직접적인 영향을 미치고 있습니다. 또한, 독일 DAX 기업 리더들이 중국과 협력하며 생산 기지를 이전할 가능성에 대한 논의는 지정학적 긴장과 보호무역주의 추세 속에서 재평가되고 있는 독일과 중국 간의 복잡하고 중요한 경제 관계를 부각하고 있습니다. 이러한 상황은 독일이 산업 경쟁력을 유지하면서 변화하는 글로벌 무역 환경에 적응해야 하는 미묘한 균형을 강요하고 있습니다.",
+      "country": "독일"
+    },
+    "ja": {
+      "word": "関税",
+      "subTopics": [
+        "貿易戦争",
+        "中国関係",
+        "ドイツ産業",
+        "輸出経済",
+        "サプライチェーン"
+      ],
+      "reason": "ドイツは、強力な産業基盤を持つ輸出志向の強い国であり、世界の貿易政策に極めて敏感です。最近の「新たな関税の脅威」に関する見出しは、ドイツの経済安定と将来の成長見通しに直接的な影響を与えています。さらに、ドイツのDAX企業幹部が中国と関わり、生産拠点を移転する可能性についての議論は、地政学的緊張と保護主義の傾向の中で再評価されているドイツと中国間の複雑かつ重要な経済関係を浮き彫りにしています。この状況は、ドイツが産業競争力を維持しつつ、変化する世界の貿易環境に適応するというデリケートなバランスを強いられていることを示しています。",
+      "country": "ドイツ"
+    }
+  }
+}

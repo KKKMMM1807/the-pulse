@@ -1,0 +1,44 @@
+{
+  "countryCode": "CN",
+  "mood": "Calm",
+  "bpm": 110,
+  "color": "#3498DB",
+  "translations": {
+    "en": {
+      "word": "Travel",
+      "subTopics": [
+        "#SpringFestival",
+        "#ReturnJourney",
+        "#TrafficManagement",
+        "#PublicSafety",
+        "#Logistics"
+      ],
+      "reason": "Multiple headlines highlight the post-Spring Festival return travel peak, emphasizing the massive movement of people, traffic management efforts, and the orderly flow of vehicles. This indicates a significant national logistical event being managed effectively.",
+      "country": "China"
+    },
+    "ko": {
+      "word": "귀성",
+      "subTopics": [
+        "#춘절",
+        "#귀성길",
+        "#교통관리",
+        "#대중안전",
+        "#물류"
+      ],
+      "reason": "여러 헤드라인에서 춘절 이후 귀성길 피크를 강조하며, 대규모 인구 이동, 교통 관리 노력, 차량의 질서 있는 흐름을 보여줍니다. 이는 국가적인 중요한 물류 이벤트가 효과적으로 관리되고 있음을 나타냅니다.",
+      "country": "중국"
+    },
+    "ja": {
+      "word": "帰省",
+      "subTopics": [
+        "#春節",
+        "#Uターンラッシュ",
+        "#交通管理",
+        "#公共安全",
+        "#物流"
+      ],
+      "reason": "複数の見出しが春節後の帰省ラッシュを強調しており、大規模な人々の移動、交通管理の取り組み、車両の秩序ある流れを示しています。これは、国家的な重要な物流イベントが効果的に管理されていることを示唆しています。",
+      "country": "中国"
+    }
+  }
+}

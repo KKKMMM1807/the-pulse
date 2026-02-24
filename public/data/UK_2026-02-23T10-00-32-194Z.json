@@ -1,0 +1,44 @@
+{
+  "countryCode": "UK",
+  "mood": "Conflict",
+  "bpm": 115,
+  "color": "#8B0000",
+  "translations": {
+    "en": {
+      "word": "Scrutiny",
+      "subTopics": [
+        "#EpsteinLinks",
+        "#GeopoliticalTensions",
+        "#RoyalScandal",
+        "#ClimateRisk",
+        "#UkraineWar"
+      ],
+      "reason": "The headlines reveal a nation under intense scrutiny, both domestically and internationally. Ongoing investigations into royal connections with the Epstein scandal dominate, alongside significant geopolitical tensions from the Ukraine war and struggles over 'western civilisation'. Concerns about AI's impact on climate targets also highlight a critical domestic challenge.",
+      "country": "United Kingdom"
+    },
+    "ko": {
+      "word": "논란",
+      "subTopics": [
+        "#엡스타인연결",
+        "#지정학적긴장",
+        "#왕실스캔들",
+        "#기후위험",
+        "#우크라이나전쟁"
+      ],
+      "reason": "헤드라인은 국내외적으로 영국이 강도 높은 조사를 받고 있음을 보여줍니다. 엡스타인 스캔들과 왕실의 연루에 대한 지속적인 조사가 주요하며, 우크라이나 전쟁과 '서구 문명'을 둘러싼 갈등과 같은 지정학적 긴장도 두드러집니다. AI가 기후 목표에 미치는 영향에 대한 우려 또한 중요한 국내 과제로 부각됩니다.",
+      "country": "영국"
+    },
+    "ja": {
+      "word": "調査",
+      "subTopics": [
+        "#エプスタイン関連",
+        "#地政学的緊張",
+        "#王室スキャンダル",
+        "#気候リスク",
+        "#ウクライナ戦争"
+      ],
+      "reason": "見出しは、英国が国内外で厳しい監視下に置かれていることを示しています。エプスタイン事件と王室との関連に関する継続的な調査が主要な話題であり、ウクライナ戦争や「西洋文明」を巡る争いといった地政学的緊張も顕著です。AIが気候目標に与える影響への懸念も、重要な国内課題として浮上しています。",
+      "country": "イギリス"
+    }
+  }
+}

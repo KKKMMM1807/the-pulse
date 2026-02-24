@@ -1,0 +1,44 @@
+{
+  "countryCode": "DE",
+  "mood": "Conflict",
+  "bpm": 135,
+  "color": "#CC0000",
+  "translations": {
+    "en": {
+      "word": "War",
+      "subTopics": [
+        "#UkraineWar",
+        "#Geopolitics",
+        "#Putin",
+        "#EuropeanSecurity",
+        "#ConflictEscalation"
+      ],
+      "reason": "The headlines are heavily dominated by the ongoing conflict in Ukraine, with explicit mentions of a potential \"third world war\" and escalating geopolitical tensions. Statements from leaders and analyses of the war's trajectory indicate a pervasive sense of conflict and danger across Europe.",
+      "country": "Germany"
+    },
+    "ko": {
+      "word": "전쟁",
+      "subTopics": [
+        "#우크라이나전쟁",
+        "#지정학",
+        "#푸틴",
+        "#유럽안보",
+        "#갈등고조"
+      ],
+      "reason": "헤드라인은 우크라이나에서 진행 중인 분쟁으로 압도적으로 지배적이며, \"제3차 세계 대전\" 가능성과 지정학적 긴장 고조에 대한 명시적인 언급이 있습니다. 지도자들의 발언과 전쟁 궤적에 대한 분석은 유럽 전역에 만연한 갈등과 위험감을 나타냅니다.",
+      "country": "독일"
+    },
+    "ja": {
+      "word": "戦争",
+      "subTopics": [
+        "#ウクライナ戦争",
+        "#地政学",
+        "#プーチン",
+        "#欧州安全保障",
+        "#紛争激化"
+      ],
+      "reason": "見出しはウクライナでの継続的な紛争に大きく支配されており、「第三次世界大戦」の可能性や地政学的緊張の高まりが明確に言及されています。指導者たちの発言や戦争の軌跡に関する分析は、ヨーロッパ全体に広がる紛争と危険感を強く示しています。",
+      "country": "ドイツ"
+    }
+  }
+}

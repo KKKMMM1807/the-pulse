@@ -1,0 +1,45 @@
+{
+  "countryCode": "KR",
+  "updatedAt": "2026-02-24T07:00:00.000Z",
+  "mood": "Conflict",
+  "bpm": 130,
+  "color": "#DC143C",
+  "translations": {
+    "en": {
+      "word": "Real Estate",
+      "subTopics": [
+        "Housing Market",
+        "Rental Crisis",
+        "Multi-home Ownership",
+        "Government Policy",
+        "Landlord-Tenant Disputes"
+      ],
+      "reason": "South Korea's unique socio-economic landscape, characterized by high population density and a strong cultural emphasis on homeownership, makes real estate a perennially sensitive and politically charged issue. Recent headlines highlight a deepening rental market crisis, exacerbated by landlord pressure for actual residence, leading to significant public confusion and instability. The President's direct warnings against challenging government policy on multi-home ownership underscore the administration's firm stance and the ongoing tension between state intervention and individual property rights, reflecting a critical domestic challenge.",
+      "country": "South Korea"
+    },
+    "ko": {
+      "word": "부동산",
+      "subTopics": [
+        "주택시장",
+        "전월세난",
+        "다주택자",
+        "정부정책",
+        "임대차분쟁"
+      ],
+      "reason": "높은 인구 밀도와 주택 소유에 대한 강한 사회적 열망이 특징인 한국의 고유한 사회경제적 환경에서 부동산은 항상 민감하고 정치적으로 중요한 사안입니다. 최근 헤드라인은 집주인의 실거주 압박으로 인한 임대차 시장의 대혼란을 조명하며, 이는 상당한 사회적 불안정을 야기하고 있습니다. 다주택자에 대한 정부 정책에 맞서지 말라는 대통령의 직접적인 경고는 국가 개입과 개인의 재산권 사이의 지속적인 긴장을 보여주며, 이는 한국 사회의 핵심적인 국내 과제로 부각되고 있는 상황입니다.",
+      "country": "대한민국"
+    },
+    "ja": {
+      "word": "不動産",
+      "subTopics": [
+        "住宅市場",
+        "賃貸危機",
+        "多住宅所有",
+        "政府政策",
+        "家主と借主の紛争"
+      ],
+      "reason": "高い人口密度と住宅所有に対する強い社会的願望が特徴である韓国独自の社会経済的環境において、不動産は常に敏感で政治的に重要な問題です。最近のヘッドラインは、家主による実居住の圧力によって引き起こされる賃貸市場の大きな混乱を浮き彫りにしており、これは社会的な不安定さを引き起こしています。多住宅所有に関する政府政策に逆らわないよう求める大統領の直接的な警告は、国家介入と個人の財産権の間の継続的な緊張を示しており、これは韓国社会における重要な国内課題として浮上している状況です。",
+      "country": "韓国"
+    }
+  }
+}

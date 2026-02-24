@@ -1,0 +1,45 @@
+{
+  "countryCode": "FR",
+  "updatedAt": "2026-02-24T07:00:00.000Z",
+  "mood": "Conflict",
+  "bpm": 130,
+  "color": "#CC0000",
+  "translations": {
+    "en": {
+      "word": "Political Life",
+      "subTopics": [
+        "LFI",
+        "Municipal Elections",
+        "Public Finances",
+        "Political Debate",
+        "Party Politics"
+      ],
+      "reason": "France is currently experiencing a highly polarized political climate, marked by intense ideological clashes, particularly concerning the left-wing party La France Insoumise (LFI). Recent headlines highlight heated rhetoric, accusations of \"anti-France\" sentiment, and a perceived brutalization of public debate, reflecting deep divisions within the nation's political landscape. This internal struggle is further underscored by ongoing local electoral contests, such as the municipal race in Marseille, and discussions around critical issues like public finances, all contributing to a dynamic and often contentious political life.",
+      "country": "France"
+    },
+    "ko": {
+      "word": "정치권",
+      "subTopics": [
+        "좌파당 LFI",
+        "지방선거",
+        "공공재정",
+        "정치 논쟁",
+        "정당 정치"
+      ],
+      "reason": "프랑스는 현재 좌파 정당인 '라 프랑스 앵수미즈(LFI)'를 둘러싼 격렬한 이념적 충돌로 인해 극도로 양극화된 정치적 분위기를 겪고 있습니다. 최근 헤드라인들은 '반프랑스' 정서에 대한 비난과 공론장의 훼손에 대한 인식을 보여주며, 이는 프랑스 정치권 내 깊은 분열을 반영하고 있습니다. 마르세유 지방선거와 같은 지속적인 지역 선거 경쟁, 그리고 공공 재정과 같은 핵심 문제에 대한 논의가 이러한 역동적이고 종종 논쟁적인 정치 생활을 더욱 부각하고 있는 상황입니다.",
+      "country": "프랑스"
+    },
+    "ja": {
+      "word": "政界",
+      "subTopics": [
+        "LFI",
+        "地方選挙",
+        "財政",
+        "政治論争",
+        "政党政治"
+      ],
+      "reason": "フランスは現在、左派政党「不服従のフランス（LFI）」を巡る激しいイデオロギー対立により、極めて二極化した政治情勢にあります。最近の見出しは、「反フランス」感情の非難や公共の議論が荒廃しているという認識を強調しており、これは国内の政治情勢における深い分裂を反映しています。マルセイユの地方選挙のような継続的な地方選挙戦や、公共財政のような重要な問題に関する議論が、このダイナミックでしばしば論争の的となる政界の動きをさらに際立たせています。",
+      "country": "フランス"
+    }
+  }
+}

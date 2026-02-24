@@ -1,0 +1,44 @@
+{
+  "countryCode": "JP",
+  "mood": "Conflict",
+  "bpm": 130,
+  "color": "#CC3333",
+  "translations": {
+    "en": {
+      "word": "Conflict",
+      "subTopics": [
+        "#Geopolitics",
+        "#War",
+        "#NuclearThreat",
+        "#HumanRights",
+        "#InternationalRelations"
+      ],
+      "reason": "Several headlines highlight ongoing international tensions, including the Russia-Ukraine war, North Korea's nuclear ambitions, Iran's nuclear negotiations, and human rights issues in Hong Kong and the Philippines. These reports collectively paint a picture of global instability and unresolved disputes.",
+      "country": "Japan"
+    },
+    "ko": {
+      "word": "분쟁",
+      "subTopics": [
+        "#지정학",
+        "#전쟁",
+        "#핵위협",
+        "#인권",
+        "#국제관계"
+      ],
+      "reason": "여러 헤드라인에서 러시아-우크라이나 전쟁, 북한의 핵 야망, 이란의 핵 협상, 홍콩과 필리핀의 인권 문제 등 지속적인 국제적 긴장을 강조하고 있습니다. 이러한 보도들은 전반적으로 세계적인 불안정과 미해결 분쟁의 상황을 보여줍니다.",
+      "country": "일본"
+    },
+    "ja": {
+      "word": "紛争",
+      "subTopics": [
+        "#地政学",
+        "#戦争",
+        "#核の脅威",
+        "#人権",
+        "#国際関係"
+      ],
+      "reason": "複数の見出しが、ロシア・ウクライナ戦争、北朝鮮の核開発、イランの核交渉、香港やフィリピンにおける人権問題など、継続する国際的な緊張を強調しています。これらの報道は、世界的な不安定さと未解決の紛争の状況を総合的に示しています。",
+      "country": "日本"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "countryCode": "UK",
+  "updatedAt": "2026-02-24T09:00:00.000Z",
+  "mood": "Conflict",
+  "bpm": 110,
+  "color": "#4A6C8C",
+  "translations": {
+    "en": {
+      "word": "Royal Accountability",
+      "subTopics": [
+        "Royal Family",
+        "Prince Andrew",
+        "Monarchy",
+        "Transparency",
+        "Scrutiny"
+      ],
+      "reason": "The United Kingdom's unique constitutional monarchy places its royal family under constant public and political scrutiny, making issues of royal conduct and accountability particularly sensitive and nationally significant. Recent headlines specifically highlight renewed calls for transparency regarding Prince Andrew's past associations and financial dealings, with political parties like the Liberal Democrats actively pushing for the release of related official documents. This ongoing pressure reflects a broader societal demand for modernizing the monarchy and ensuring that even senior royals are held to high standards of public ethics, especially concerning their roles and the use of public funds. The persistent focus on Prince Andrew's 'royal disgrace' underscores the deep-seated tension between traditional royal privilege and contemporary expectations of accountability within the British establishment.",
+      "country": "United Kingdom"
+    },
+    "ko": {
+      "word": "왕실 책임",
+      "subTopics": [
+        "왕실",
+        "앤드루 왕자",
+        "군주제",
+        "투명성",
+        "감시"
+      ],
+      "reason": "영국의 독특한 입헌군주제는 왕실 구성원들을 끊임없는 대중적, 정치적 감시 아래 두며, 왕실의 행동과 책임에 대한 문제는 특히 민감하고 국가적으로 중요한 사안입니다. 최근 헤드라인은 앤드루 왕자의 과거 연루와 재정 거래에 대한 투명성 요구가 다시 불거졌음을 구체적으로 보여주며, 자유민주당과 같은 정당들이 관련 공식 문서 공개를 적극적으로 추진하고 있습니다. 이러한 지속적인 압력은 군주제를 현대화하고 고위 왕족조차도 공공 윤리의 높은 기준을 준수해야 한다는 광범위한 사회적 요구를 반영하며, 특히 그들의 역할과 공적 자금 사용에 대한 것입니다. 앤드루 왕자의 '왕실 불명예'에 대한 지속적인 초점은 영국의 전통적인 왕실 특권과 현대 사회의 책임 요구 사이의 뿌리 깊은 긴장을 명확히 보여주고 있습니다.",
+      "country": "영국"
+    },
+    "ja": {
+      "word": "王室の責任",
+      "subTopics": [
+        "王室",
+        "アンドルー王子",
+        "君主制",
+        "透明性",
+        "監視"
+      ],
+      "reason": "英国の独特な立憲君主制は、王室メンバーを絶え間ない国民的・政治的監視下に置き、王室の行動と説明責任に関する問題は特に敏感で国家的に重要な意味を持ちます。最近のヘッドラインは、アンドルー王子の過去の交友関係や財政取引に関する透明性を求める声が再び高まっていることを具体的に示しており、自由民主党のような政党が関連公文書の公開を積極的に推進しています。この継続的な圧力は、君主制を現代化し、高位の王族でさえも公的倫理の高い基準を遵守すべきであるという広範な社会的要請を反映しており、特に彼らの役割と公的資金の使用に関して顕著です。アンドルー王子の「王室の不名誉」に継続的に焦点が当てられていることは、英国における伝統的な王室の特権と現代の説明責任への期待との間の根深い緊張を浮き彫りにしています。",
+      "country": "英国"
+    }
+  }
+}

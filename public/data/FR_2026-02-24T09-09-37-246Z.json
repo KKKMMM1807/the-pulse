@@ -1,0 +1,45 @@
+{
+  "countryCode": "FR",
+  "updatedAt": "2026-02-24T09:00:00.000Z",
+  "mood": "Conflict",
+  "bpm": 140,
+  "color": "#D92323",
+  "translations": {
+    "en": {
+      "word": "Radicalization",
+      "subTopics": [
+        "Antifascism",
+        "Youth movements",
+        "Political violence",
+        "Far-left",
+        "La France Insoumise"
+      ],
+      "reason": "France is currently grappling with a significant rise in political radicalization, particularly among youth groups associated with the far-left. Recent events, such as the death of an antifascist militant in Lyon and the controversy surrounding Jean-Luc Mélenchon's support for groups like the Jeune Garde, underscore a growing concern over the increasing extremism within political activism. This situation reflects deep-seated tensions within French society regarding the boundaries of political engagement and the potential for violence, prompting intense public and media debate on the nature of youth movements and their ideological shifts.",
+      "country": "France"
+    },
+    "ko": {
+      "word": "급진화",
+      "subTopics": [
+        "반파시즘",
+        "청년 운동",
+        "정치 폭력",
+        "극좌",
+        "라 프랑스 앵수미즈"
+      ],
+      "reason": "프랑스는 현재 특히 극좌 청년 단체들을 중심으로 정치적 급진화가 크게 증가하는 문제에 직면해 있습니다. 리옹에서 발생한 반파시스트 활동가의 사망 사건과 장-뤽 멜랑숑 같은 정치인이 '젊은 수비대(Jeune Garde)'와 같은 단체를 지지하는 것을 둘러싼 논란은 정치적 행동주의 내에서 증가하는 극단주의에 대한 우려를 강조하고 있습니다. 이러한 상황은 프랑스 사회 내에 깊이 뿌리내린 정치 참여의 경계와 폭력 가능성에 대한 긴장을 반영하며, 청년 운동의 본질과 이념적 변화에 대한 집중적인 대중 및 언론의 논쟁을 촉발하고 있는 상황입니다.",
+      "country": "프랑스"
+    },
+    "ja": {
+      "word": "過激化",
+      "subTopics": [
+        "反ファシズム",
+        "青年運動",
+        "政治的暴力",
+        "極左",
+        "不服従のフランス"
+      ],
+      "reason": "フランスでは現在、特に極左系の青年団体を中心に、政治的過激化が顕著に増加している問題に直面しています。リヨンで発生した反ファシスト活動家の死亡事件や、ジャン＝リュック・メランションのような政治家が「青年衛兵隊（Jeune Garde）」のような団体を支持していることに関する論争は、政治的活動主義における過激主義の増大に対する懸念を浮き彫りにしています。この状況は、フランス社会に深く根差した政治参加の境界線と暴力の可能性に関する緊張を反映しており、青年運動の本質とそのイデオロギー的変化について、集中的な国民的およびメディアの議論を巻き起こしています。",
+      "country": "フランス"
+    }
+  }
+}

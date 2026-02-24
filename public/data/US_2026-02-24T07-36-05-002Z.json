@@ -1,0 +1,45 @@
+{
+  "countryCode": "US",
+  "updatedAt": "2026-02-24T07:00:00.000Z",
+  "mood": "Conflict",
+  "bpm": 130,
+  "color": "#191970",
+  "translations": {
+    "en": {
+      "word": "Winter Storm",
+      "subTopics": [
+        "Blizzard",
+        "Snow Emergency",
+        "Record Snowfall",
+        "Northeast Weather",
+        "Travel Disruption"
+      ],
+      "reason": "The United States, particularly its densely populated Northeast region, is currently grappling with a severe winter storm that has brought record-breaking snowfall and blizzard conditions. This event is uniquely significant due to its widespread impact on major metropolitan areas, disrupting daily life, transportation, and essential services across several states. The region's infrastructure is being tested, leading to emergency declarations and significant public safety concerns.",
+      "country": "United States"
+    },
+    "ko": {
+      "word": "겨울 폭풍",
+      "subTopics": [
+        "눈보라",
+        "비상사태",
+        "기록적인 폭설",
+        "북동부 날씨",
+        "교통 마비"
+      ],
+      "reason": "미국, 특히 인구 밀집도가 높은 북동부 지역은 현재 기록적인 폭설과 눈보라를 동반한 심각한 겨울 폭풍에 직면해 있습니다. 이 현상은 주요 대도시 지역에 광범위한 영향을 미쳐 여러 주에 걸쳐 일상생활, 교통 및 필수 서비스에 큰 혼란을 초래하고 있다는 점에서 특히 중요합니다. 지역 인프라가 시험대에 오르며 비상사태 선포와 함께 공공 안전에 대한 상당한 우려를 낳고 있는 상황입니다.",
+      "country": "미국"
+    },
+    "ja": {
+      "word": "冬の嵐",
+      "subTopics": [
+        "吹雪",
+        "雪害",
+        "記録的降雪",
+        "北東部",
+        "交通麻痺"
+      ],
+      "reason": "米国、特に人口密度の高い北東部地域は現在、記録的な降雪と吹雪を伴う深刻な冬の嵐に見舞われています。この事態は、主要な大都市圏に広範囲に影響を及ぼし、複数の州で日常生活、交通、および必要不可欠なサービスを混乱させている点で特に重要です。地域のインフラが試されており、非常事態宣言や公衆安全に関する重大な懸念が生じています。",
+      "country": "米国"
+    }
+  }
+}

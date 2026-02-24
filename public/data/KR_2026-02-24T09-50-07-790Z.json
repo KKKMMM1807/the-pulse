@@ -1,0 +1,45 @@
+{
+  "countryCode": "KR",
+  "updatedAt": "2026-02-24T09:00:00.000Z",
+  "mood": "Conflict",
+  "bpm": 120,
+  "color": "#FF4500",
+  "translations": {
+    "en": {
+      "word": "Judiciary",
+      "subTopics": [
+        "Political Corruption",
+        "Judicial Reform",
+        "Bribery Scandals",
+        "Accountability",
+        "Legal Proceedings"
+      ],
+      "reason": "South Korea's unique history of democratic transition and persistent issues with political-corporate-religious collusion makes the integrity of its judiciary a perennial and highly sensitive topic. Recent headlines reveal a concentrated focus on the justice system actively addressing high-profile cases of political corruption, including allegations of rebellion, illicit political funding, and deep-seated ties between religious organizations and political figures. The ongoing discussions and actions around \"judicial reform laws\" and the Supreme Court's involvement underscore a national effort to strengthen the rule of law and enhance public trust in its institutions. This intense scrutiny reflects a societal demand for greater transparency and accountability from those in power, ensuring that the legal framework effectively upholds democratic principles.",
+      "country": "South Korea"
+    },
+    "ko": {
+      "word": "사법",
+      "subTopics": [
+        "정치부패",
+        "사법개혁",
+        "뇌물수수",
+        "책임규명",
+        "법적절차"
+      ],
+      "reason": "대한민국은 민주화 이행 과정에서 정치-기업-종교 간 유착 문제에 대한 고유한 역사적 경험을 가지고 있으며, 이로 인해 사법부의 청렴성은 항상 민감한 주제로 다루어져 왔습니다. 최근 헤드라인들은 내란 가담 의혹, 불법 정치자금 수수, 종교 단체와 정치권의 깊은 유착 등 고위 정치인 관련 부패 사건에 대한 사법 시스템의 적극적인 대응을 집중적으로 조명하고 있습니다. '사법개혁 3법' 논의와 대법원의 관련 회의는 법치주의를 강화하고 공공 기관에 대한 국민 신뢰를 높이려는 국가적 노력을 분명히 보여주고 있습니다. 이러한 강도 높은 감시는 권력층에 대한 투명성과 책임 규명을 요구하는 사회적 목소리를 반영하며, 법적 틀이 민주적 원칙을 효과적으로 지지하도록 보장하는 상황입니다.",
+      "country": "대한민국"
+    },
+    "ja": {
+      "word": "司法",
+      "subTopics": [
+        "政治腐敗",
+        "司法改革",
+        "贈収賄スキャンダル",
+        "説明責任",
+        "法的手続き"
+      ],
+      "reason": "韓国は民主化移行の歴史の中で、政治・企業・宗教間の癒着問題という独自の経験を有しており、このため司法の公正性は常に非常に敏感なテーマとして扱われてきました。最近のヘッドラインは、反乱加担疑惑、不正な政治資金受受、宗教団体と政界の深い癒着など、高位政治家に関連する腐敗事件に対し、司法制度が積極的に対応している状況を集中的に報じています。現在進行中の「司法改革3法」に関する議論や最高裁判所の関連会議は、法の支配を強化し、公共機関に対する国民の信頼を高めようとする国家的な取り組みを明確に示しています。この厳しい監視は、権力者に対する透明性と説明責任を求める社会的な要求を反映しており、法的な枠組みが民主主義の原則を効果的に支持するよう確保する状況です。",
+      "country": "韓国"
+    }
+  }
+}

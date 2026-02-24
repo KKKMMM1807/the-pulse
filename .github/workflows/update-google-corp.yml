@@ -1,0 +1,27 @@
+name: Daily Google News Update
+
+on:
+  schedule:
+    - cron: '0 23 * * *' # 23:00 UTC is 08:00 KST
+  workflow_dispatch:
+
+jobs:
+  update-google-news:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - run: npm install node-fetch
+      - name: Fetch and Analyze Google News
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node scripts/fetch-google-corp-news.cjs
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add public/data/google-news.json
+          git commit -m "chore: nightly update of google corp news" || echo "No changes to commit"
+          git push

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Pulse Pro - Checkout</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#06ea61",
+                        "background-light": "#f5f8f7",
+                        "background-dark": "#0f2317",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased min-h-screen flex flex-col">
+<!-- Header (Simplified for Checkout) -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 px-6 py-4 lg:px-10 lg:py-5 bg-white/50 dark:bg-slate-900/50 backdrop-blur-md sticky top-0 z-50">
+<div class="flex items-center gap-4 text-slate-900 dark:text-slate-100">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 42.4379C4 42.4379 14.0962 36.0744 24 41.1692C35.0664 46.8624 44 42.2078 44 42.2078L44 7.01134C44 7.01134 35.068 11.6577 24.0031 5.96913C14.0971 0.876274 4 7.27094 4 7.27094L4 42.4379Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-tight">The Pulse</h2>
+</div>
+<a class="text-sm font-medium text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 transition-colors" href="#">
+            Cancel
+        </a>
+</header>
+<!-- Main Content -->
+<main class="flex-grow flex items-center justify-center p-4 lg:p-8 relative overflow-hidden">
+<!-- Subtle Glowing Earth Background -->
+<div class="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+<div class="absolute -right-20 -bottom-40 w-[600px] h-[600px] bg-primary/10 rounded-full blur-3xl opacity-50 dark:opacity-20"></div>
+<div class="absolute -left-20 top-20 w-[400px] h-[400px] bg-blue-400/10 rounded-full blur-3xl opacity-40 dark:opacity-10"></div>
+</div>
+<div class="w-full max-w-[1100px] bg-white dark:bg-slate-900 rounded-xl shadow-xl overflow-hidden grid grid-cols-1 lg:grid-cols-12 relative z-10 border border-slate-100 dark:border-slate-800">
+<!-- Left Side: Value Proposition -->
+<div class="lg:col-span-5 bg-slate-50 dark:bg-slate-800/50 p-8 lg:p-12 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-slate-100 dark:border-slate-800">
+<div>
+<div class="flex items-center gap-2 mb-6">
+<span class="bg-primary/20 text-green-700 dark:text-primary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wide">Lifetime Deal</span>
+</div>
+<h1 class="text-3xl lg:text-4xl font-black tracking-tight text-slate-900 dark:text-white mb-4">
+                        Unlock The Pulse <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-green-600">Pro</span>
+</h1>
+<p class="text-slate-600 dark:text-slate-400 text-lg mb-8 leading-relaxed">
+                        Get the edge with faster updates, deeper history, and AI-powered insights. One payment, forever.
+                    </p>
+<ul class="space-y-6">
+<li class="flex items-start gap-4">
+<div class="bg-white dark:bg-slate-800 p-2 rounded-full shadow-sm text-primary shrink-0 border border-slate-100 dark:border-slate-700">
+<span class="material-symbols-outlined text-[20px]">schedule</span>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-white">1-Hour Updates</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400">Sentiment data refreshed 24x faster than free.</p>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<div class="bg-white dark:bg-slate-800 p-2 rounded-full shadow-sm text-primary shrink-0 border border-slate-100 dark:border-slate-700">
+<span class="material-symbols-outlined text-[20px]">history</span>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-white">30-Day History</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400">Analyze trends with a full month of historical data.</p>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<div class="bg-white dark:bg-slate-800 p-2 rounded-full shadow-sm text-primary shrink-0 border border-slate-100 dark:border-slate-700">
+<span class="material-symbols-outlined text-[20px]">smart_toy</span>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-white">AI Summaries</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400">Instant 3-line summaries of breaking global news.</p>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<div class="bg-white dark:bg-slate-800 p-2 rounded-full shadow-sm text-primary shrink-0 border border-slate-100 dark:border-slate-700">
+<span class="material-symbols-outlined text-[20px]">notifications_active</span>
+</div>
+<div>
+<h3 class="font-bold text-slate-900 dark:text-white">Keyword Alerts</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400">Track specific topics with custom real-time alerts.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="mt-12 pt-8 border-t border-slate-200 dark:border-slate-700">
+<div class="flex items-center gap-4">
+<div class="flex -space-x-3">
+<img alt="User portrait" class="w-10 h-10 rounded-full border-2 border-white dark:border-slate-800 object-cover" data-alt="Portrait of a smiling young woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjEJGS-1N7BJT2UPWO9JwkddkKsnAkvydV1Zo5XAhZlOhhT-61K-phR4zL3qd2u3rDm1f4UoLq8stzpYemgKwWhpl4Y5x4lJt6Gc4MIeRA86hfn6yL-Hyxj7VrZzaXAFZFAj-JVkdye4TDcWnOT4nOa1ZY5blIy8hHAYEh0D4sZYV0-byTfIdTmdxruTiv72Fdri_4_DBY3CB2SogLD8X0ubNe3I-p0wWLPWrejWMpg-DyNo1--8xtn9VXMAQ7qM7L6zcjiq78ObM"/>
+<img alt="User portrait" class="w-10 h-10 rounded-full border-2 border-white dark:border-slate-800 object-cover" data-alt="Portrait of a focused man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDS_IiWQYPjQFKDR3yklAqufJ5OZ-5XtZYy8gv7i8zkxCctUSD4umy_yrmhwPV_JIkXFSGyJ9wlkzmtXu_FV-Duo2sbwoOpSl3gEcLyXHzvFZaOT2OOrbNCTm7gd-4HkX10wVUgQmPqia2LPAG343PNxNn60fnDjTQwhpPEmWvMditVCw_GSrFobx9VID_pHZ_7hjoQUMJqdy0gPppI--kuVPhxMwHuh1emWI1-hHi-aBHsh6BRB_E2w5b3AdZ4wPNxckZ3auar5Rs"/>
+<img alt="User portrait" class="w-10 h-10 rounded-full border-2 border-white dark:border-slate-800 object-cover" data-alt="Portrait of a man smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2QQ3Oqna7oyI0QVFUn-1PEzN771oCd4asbiWTMBGERwrKVOuILVk4wIIH-KM0wkNDIU3SlA7HlcQWfVz1wtEx6A1luMF6YfDOlbaxse1jDsiilkJfwX_vIYUQkkGXUVqXe4B6VxjmhrrOY1Dnp0GjhkAUk1kvOZD_8oMTURtR-9YsFpLc9zNkDjoH3pB3zg0N8gHTW8-5zBJTuNxR9c6Z1kJOADJUpcrHPBIHccDgpO4Bk5Cu_K3U1ywJR7ObK-VwgFCKwFq-KdA"/>
+<div class="w-10 h-10 rounded-full border-2 border-white dark:border-slate-800 bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-xs font-bold text-slate-600 dark:text-slate-300">+2k</div>
+</div>
+<p class="text-sm font-medium text-slate-600 dark:text-slate-400">
+                            Join <strong class="text-slate-900 dark:text-white">2,400+</strong> analysts using Pro.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Right Side: Checkout Form -->
+<div class="lg:col-span-7 p-8 lg:p-12 flex flex-col">
+<div class="flex items-end justify-between mb-8">
+<div>
+<h2 class="text-2xl font-bold text-slate-900 dark:text-white">Checkout</h2>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Secure encrypted payment</p>
+</div>
+<div class="text-right">
+<p class="text-sm text-slate-500 dark:text-slate-400 line-through decoration-slate-400">$29.00</p>
+<p class="text-3xl font-black text-slate-900 dark:text-white">$5.00</p>
+<p class="text-xs font-medium text-primary">One-time payment</p>
+</div>
+</div>
+<form class="flex flex-col gap-6 grow">
+<!-- Email Section -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300 ml-1" for="email">Email address</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 material-symbols-outlined text-[20px]">mail</span>
+<input class="w-full pl-11 pr-4 py-3.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none placeholder:text-slate-400 font-medium" id="email" placeholder="you@example.com" required="" type="email"/>
+</div>
+</div>
+<!-- Payment Details Section -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300 ml-1">Payment details</label>
+<div class="border border-slate-200 dark:border-slate-700 rounded-lg overflow-hidden bg-slate-50 dark:bg-slate-800">
+<!-- Card Number -->
+<div class="relative border-b border-slate-200 dark:border-slate-700">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 material-symbols-outlined text-[20px]">credit_card</span>
+<input class="w-full pl-11 pr-4 py-3.5 bg-transparent text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent focus:z-10 relative transition-all outline-none placeholder:text-slate-400 font-medium" placeholder="Card number" required="" type="text"/>
+<div class="absolute right-4 top-1/2 -translate-y-1/2 flex gap-2 opacity-50 grayscale">
+<div class="w-8 h-5 bg-slate-300 rounded-sm"></div>
+<div class="w-8 h-5 bg-slate-300 rounded-sm"></div>
+</div>
+</div>
+<!-- Expiry & CVC -->
+<div class="flex divide-x divide-slate-200 dark:divide-slate-700">
+<div class="relative w-1/2">
+<input class="w-full px-4 py-3.5 bg-transparent text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent focus:z-10 relative transition-all outline-none placeholder:text-slate-400 font-medium text-center" placeholder="MM / YY" required="" type="text"/>
+</div>
+<div class="relative w-1/2">
+<input class="w-full px-4 py-3.5 bg-transparent text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent focus:z-10 relative transition-all outline-none placeholder:text-slate-400 font-medium text-center" placeholder="CVC" required="" type="text"/>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 material-symbols-outlined text-[18px] cursor-help">help</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Cardholder Name -->
+<div class="flex flex-col gap-2">
+<label class="text-sm font-semibold text-slate-700 dark:text-slate-300 ml-1" for="cardholder">Cardholder name</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 material-symbols-outlined text-[20px]">person</span>
+<input class="w-full pl-11 pr-4 py-3.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none placeholder:text-slate-400 font-medium" id="cardholder" placeholder="Full name on card" required="" type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-3 py-2">
+<div class="bg-green-100 dark:bg-green-900/30 p-2 rounded-full text-green-600 dark:text-green-400">
+<span class="material-symbols-outlined text-[18px] block">lock</span>
+</div>
+<p class="text-xs text-slate-500 dark:text-slate-400 leading-tight">
+                            Payments are secure and encrypted. We do not store your credit card information.
+                        </p>
+</div>
+<div class="mt-auto pt-4">
+<button class="group w-full bg-primary hover:bg-[#05d558] text-slate-900 font-bold py-4 px-6 rounded-full transition-all transform active:scale-[0.99] flex items-center justify-center gap-2 shadow-[0_4px_14px_0_rgba(6,234,97,0.39)]" type="submit">
+<span>Unlock Lifetime Access</span>
+<span class="material-symbols-outlined text-[20px] group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<p class="text-center text-xs text-slate-400 dark:text-slate-500 mt-4">
+                            By clicking the button above, you agree to our <a class="underline hover:text-slate-600 dark:hover:text-slate-300" href="#">Terms of Service</a> and <a class="underline hover:text-slate-600 dark:hover:text-slate-300" href="#">Privacy Policy</a>.
+                        </p>
+</div>
+</form>
+</div>
+</div>
+</main>
+</body></html>

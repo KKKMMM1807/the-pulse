@@ -1,0 +1,45 @@
+{
+  "countryCode": "CN",
+  "updatedAt": "2026-02-24T09:00:00.000Z",
+  "mood": "Calm",
+  "bpm": 95,
+  "color": "#34568B",
+  "translations": {
+    "en": {
+      "word": "Two Sessions",
+      "subTopics": [
+        "National People's Congress",
+        "Chinese People's Political Consultative Conference",
+        "Government Work Report",
+        "Economic Targets",
+        "Policy Setting"
+      ],
+      "reason": "The 'Two Sessions' (Lianghui) are uniquely significant in China as they represent the annual convergence of the National People's Congress and the Chinese People's Political Consultative Conference, which are central to the nation's political and economic governance. This event is where the government's work report is delivered, key economic targets are set, and major policy directions for the upcoming year are formally approved, profoundly influencing every sector. Unlike parliamentary sessions in other countries, the 'Two Sessions' operate within China's unique one-party system, serving as a crucial mechanism for legitimizing and implementing the Communist Party's agenda nationwide. The current focus on 'opening year' concerns underscores its role in strategizing for new development phases and addressing pressing domestic challenges, making it a pivotal moment for national direction.",
+      "country": "China"
+    },
+    "ko": {
+      "word": "양회",
+      "subTopics": [
+        "전국인민대표대회",
+        "전국인민정치협상회의",
+        "정부 업무 보고",
+        "경제 목표",
+        "정책 수립"
+      ],
+      "reason": "양회는 중국의 독특한 정치 시스템에서 전국인민대표대회와 전국인민정치협상회의가 매년 한자리에 모이는 중요한 행사로, 국가의 정치 및 경제 거버넌스에 핵심적인 역할을 합니다. 이 기간 동안 정부 업무 보고가 발표되고, 주요 경제 목표가 설정되며, 향후 1년간의 주요 정책 방향이 공식적으로 승인되어 국가의 모든 부문에 지대한 영향을 미칩니다. 다른 국가의 의회 회기와 달리, 양회는 중국의 일당 체제 내에서 운영되며, 공산당의 의제를 전국적으로 합법화하고 실행하는 중요한 메커니즘으로 기능합니다. 현재 '개시의 해'에 대한 관심은 새로운 발전 단계와 시급한 국내 문제 해결을 위한 전략 수립에 있어 양회의 역할을 강조하며, 국가 방향 설정의 중추적인 순간임을 나타내고 있습니다.",
+      "country": "중국"
+    },
+    "ja": {
+      "word": "両会",
+      "subTopics": [
+        "全国人民代表大会",
+        "全国政治協商会議",
+        "政府活動報告",
+        "経済目標",
+        "政策策定"
+      ],
+      "reason": "両会は、中国独自の政治システムにおいて、全国人民代表大会と中国人民政治協商会議が毎年一堂に会する重要な行事であり、国家の政治経済ガバナンスの中核をなしています。この期間中に政府活動報告が発表され、主要な経済目標が設定され、今後1年間の主要政策方向が正式に承認され、国のあらゆる分野に深く影響を与えます。他国の議会とは異なり、両会は中国の一党制の下で運営され、共産党の政策を全国的に正当化し実行するための重要なメカニズムとして機能します。現在、「開局の年」への注目は、新たな発展段階と喫緊の国内課題解決に向けた戦略策定における両会の役割を強調しており、国家の方向性を決定する極めて重要な瞬間となっています。",
+      "country": "中国"
+    }
+  }
+}

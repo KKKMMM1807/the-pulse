@@ -1,0 +1,45 @@
+{
+  "countryCode": "US",
+  "updatedAt": "2026-02-24T09:00:00.000Z",
+  "mood": "Panic",
+  "bpm": 140,
+  "color": "#DC143C",
+  "translations": {
+    "en": {
+      "word": "Semiconductors",
+      "subTopics": [
+        "Chip supply chain",
+        "Taiwan manufacturing",
+        "Artificial intelligence",
+        "Technological competition",
+        "National security"
+      ],
+      "reason": "The United States' economic and national security future is inextricably linked to the global semiconductor industry, particularly its reliance on advanced manufacturing in Taiwan. Recent headlines highlight a growing anxiety within American markets and Silicon Valley regarding potential disruptions to this critical supply chain, which underpins everything from consumer electronics to advanced military technology. This concern is amplified by geopolitical tensions surrounding Taiwan, posing a significant risk to the technological innovation and economic stability that the U.S. has long championed. The nation's strategic efforts to onshore chip manufacturing and invest heavily in AI development underscore the urgent recognition of this vulnerability and the imperative to secure its technological independence.",
+      "country": "United States"
+    },
+    "ko": {
+      "word": "반도체",
+      "subTopics": [
+        "칩 공급망",
+        "대만 생산",
+        "인공지능 기술",
+        "기술 경쟁",
+        "국가 안보"
+      ],
+      "reason": "미국의 경제 및 국가 안보 미래는 전 세계 반도체 산업, 특히 대만의 첨단 제조 능력에 대한 의존도와 밀접하게 연결되어 있습니다. 최근 헤드라인은 소비자 전자제품부터 첨단 군사 기술에 이르기까지 모든 것을 뒷받침하는 이 핵심 공급망의 잠재적 중단에 대한 미국 시장과 실리콘 밸리 내의 커지는 불안감을 부각하고 있습니다. 이러한 우려는 대만을 둘러싼 지정학적 긴장으로 인해 더욱 증폭되며, 미국이 오랫동안 주도해 온 기술 혁신과 경제 안정에 심각한 위험을 초래하는 상황입니다. 미국이 칩 제조를 국내로 유치하고 인공지능 개발에 막대한 투자를 하는 전략적 노력은 이러한 취약성에 대한 시급한 인식과 기술적 독립성을 확보하려는 절박함을 보여주고 있습니다.",
+      "country": "미국"
+    },
+    "ja": {
+      "word": "半導体",
+      "subTopics": [
+        "チップ供給網",
+        "台湾製造",
+        "人工知能技術",
+        "技術競争",
+        "国家安全保障"
+      ],
+      "reason": "米国の経済と国家安全保障の未来は、世界の半導体産業、特に台湾の先端製造能力への依存と密接に結びついています。最近のヘッドラインは、家電製品から高度な軍事技術に至るまで全てを支えるこの重要なサプライチェーンの潜在的な混乱に対する、米国市場とシリコンバレー内の高まる不安を浮き彫りにしています。この懸念は、台湾を巡る地政学的緊張によってさらに増幅されており、米国が長年推進してきた技術革新と経済的安定に深刻なリスクをもたらします。米国がチップ製造を国内に戻し、AI開発に多額の投資を行う戦略的努力は、この脆弱性に対する緊急の認識と、技術的独立性を確保するという切迫した必要性を示しています。",
+      "country": "米国"
+    }
+  }
+}

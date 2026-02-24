@@ -1,0 +1,45 @@
+{
+  "countryCode": "US",
+  "updatedAt": "2026-02-24T09:00:00.000Z",
+  "mood": "Panic",
+  "bpm": 130,
+  "color": "#4682B4",
+  "translations": {
+    "en": {
+      "word": "Blizzard",
+      "subTopics": [
+        "Snow emergency",
+        "Northeast weather",
+        "Travel disruption",
+        "Power outages",
+        "Winter storm"
+      ],
+      "reason": "The United States is currently grappling with a severe winter blizzard impacting its densely populated Northeast region, a critical economic and transportation hub. This specific weather event has led to widespread travel disruptions, school closures, and emergency declarations in major cities like Philadelphia and Boston, highlighting the vulnerability of urban infrastructure to extreme weather. The unprecedented decision by The Boston Globe to halt print delivery underscores the immediate and significant impact this blizzard has on daily life and commerce, making it a uniquely pressing and localized concern for a substantial portion of the American population.",
+      "country": "United States"
+    },
+    "ko": {
+      "word": "폭설",
+      "subTopics": [
+        "겨울 폭풍",
+        "동북부 날씨",
+        "교통 마비",
+        "비상사태",
+        "정전"
+      ],
+      "reason": "미국은 현재 인구 밀집 지역이자 주요 경제 및 교통 중심지인 동북부 지역에 심각한 겨울 폭풍과 폭설로 인해 큰 어려움을 겪고 있습니다. 필라델피아와 보스턴 같은 주요 도시에서는 광범위한 교통 마비, 학교 폐쇄, 비상사태 선포가 이어지며 도시 인프라의 취약성을 드러내고 있습니다. 보스턴 글로브가 신문 인쇄를 중단하는 전례 없는 결정을 내린 것은 이번 폭설이 일상생활과 상업 활동에 미치는 즉각적이고 중대한 영향을 보여주며, 미국 인구 상당 부분에게 특별히 시급하고 지역적인 문제로 부각되고 있는 상황입니다.",
+      "country": "미국"
+    },
+    "ja": {
+      "word": "猛吹雪",
+      "subTopics": [
+        "冬の嵐",
+        "北東部気象",
+        "交通麻痺",
+        "停電",
+        "緊急事態"
+      ],
+      "reason": "米国では現在、人口が密集し経済・交通の要衝である北東部地域が猛吹雪と深刻な冬の嵐に見舞われています。フィラデルフィアやボストンといった主要都市では、広範囲にわたる交通機関の混乱、学校の閉鎖、非常事態宣言が発令されており、都市インフラの脆弱性が浮き彫りになっています。ボストン・グローブ紙が新聞の印刷・配達を停止するという異例の決定を下したことは、この猛吹雪が日常生活と商業活動に与える即時かつ重大な影響を示しており、米国人口の大部分にとって特に喫緊かつ地域的な懸念事項となっています。",
+      "country": "米国"
+    }
+  }
+}

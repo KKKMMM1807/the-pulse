@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html class="" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Pulse: Clean Earth Dashboard</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                colors: {
+                    primary: "#06D6A0", 
+                    "primary-dim": "#A3EAD4",
+                    "background-light": "#F8FAFC", 
+                    "card-white": "#FFFFFF",
+                    "text-dark": "#1E293B",
+                    "text-muted": "#64748B",
+                },
+                fontFamily: {
+                    display: ['"DM Sans"', "sans-serif"],
+                },
+                borderRadius: {
+                    DEFAULT: "0.5rem",
+                    lg: "1rem",
+                    xl: "1.5rem",
+                    "2xl": "2rem",
+                    "3xl": "2.5rem",
+                    full: "9999px"
+                },
+                boxShadow: {
+                    "soft": "0 20px 40px -10px rgba(0, 0, 0, 0.05)",
+                    "glow": "0 0 20px rgba(6, 214, 160, 0.3)",
+                    "modal": "0 25px 50px -12px rgba(0, 0, 0, 0.25)"
+                },
+                animation: {
+                    "pulse-slow": "pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+                    "spin-slow": "spin 120s linear infinite",
+                    float: "float 6s ease-in-out infinite",
+                    heartbeat: "heartbeat 1.5s ease-in-out infinite"
+                },
+                keyframes: {
+                    float: {
+                        "0%, 100%": { transform: "translateY(0)" },
+                        "50%": { transform: "translateY(-10px)" }
+                    },
+                    heartbeat: {
+                        "0%": { transform: "scale(1)" },
+                        "14%": { transform: "scale(1.1)" },
+                        "28%": { transform: "scale(1)" },
+                        "42%": { transform: "scale(1.1)" },
+                        "70%": { transform: "scale(1)" }
+                    }
+                }
+            }
+        }
+    };
+</script>
+<style>::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F1F5F9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #CBD5E1;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94A3B8;
+        }.bg-dot-pattern {
+            background-image: radial-gradient(#CBD5E1 1px, transparent 1px);
+            background-size: 32px 32px;
+        }.ekg-line {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: dash 5s linear infinite;
+        }
+        @keyframes dash {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+    </style>
+</head>
+<body class="bg-background-light text-text-dark font-display min-h-screen flex flex-col overflow-hidden relative selection:bg-primary/20 selection:text-primary">
+<div class="fixed inset-0 z-0 blur-[8px] pointer-events-none select-none opacity-60">
+<div class="fixed inset-0 pointer-events-none z-0">
+<div class="absolute top-[-10%] left-[10%] w-[800px] h-[800px] bg-blue-100/50 rounded-full blur-[100px] opacity-60"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-green-100/50 rounded-full blur-[100px] opacity-60"></div>
+<div class="absolute inset-0 bg-dot-pattern z-[-1] opacity-40"></div>
+</div>
+<nav class="relative z-50 w-full px-6 py-6 flex items-center justify-between">
+<div class="flex items-center gap-4 group">
+<div class="relative size-12 flex items-center justify-center bg-white rounded-2xl shadow-sm border border-slate-100">
+<span class="material-symbols-outlined text-primary text-3xl">public</span>
+</div>
+<div class="flex flex-col">
+<h1 class="text-xl font-bold tracking-tight leading-none text-slate-800">The Pulse</h1>
+<span class="text-[11px] uppercase tracking-wider text-slate-400 font-medium mt-0.5">Clean Earth View</span>
+</div>
+</div>
+<div class="hidden md:flex items-center bg-white rounded-full border border-slate-100 p-1.5 shadow-soft">
+<div class="relative group">
+<div class="flex items-center gap-2 pl-4 pr-3 py-2 rounded-full">
+<span class="material-symbols-outlined text-primary text-[20px]">language</span>
+<span class="text-sm font-medium text-slate-600">Global View</span>
+<span class="material-symbols-outlined text-slate-400 text-[18px]">expand_more</span>
+</div>
+</div>
+<div class="w-px h-6 bg-slate-100 mx-2"></div>
+<div class="flex items-center gap-1">
+<button class="px-4 py-1.5 rounded-full text-xs font-bold bg-slate-900 text-white shadow-md">EN</button>
+<button class="px-4 py-1.5 rounded-full text-xs font-bold text-slate-400">JP</button>
+<button class="px-4 py-1.5 rounded-full text-xs font-bold text-slate-400">KR</button>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="size-11 flex items-center justify-center rounded-2xl bg-white border border-slate-100 text-slate-400 shadow-sm">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</button>
+<button class="size-11 flex items-center justify-center rounded-2xl bg-white border border-slate-100 text-slate-400 shadow-sm">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+<div class="ml-2 size-11 rounded-2xl overflow-hidden border-2 border-white shadow-md">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACCthbKtdzLeKGM3eX8pJI3KAUMZdgHCSXFhFNJkaGfbVXQ4h34-ViabAB1yf2wKPKXSpVcSZlvNJnnMqnqpS0zyaTe32s3WEkP8oUt22r-Q_82Cv0hGhxr9dBNsdd4LIcsyEi_qBDc9p_AG6kXnpxHzvNLwMox8U32KNo-ySr7xt4gYBSbtB8yjwjad8d1G8uV-GIMi-D2uCH4jif9qRYUqfM8JRPVd296Fa-y6EA-HCsxQyBF5Lb-j_qLPJ6ldQZ19c7qBQ90xY"/>
+</div>
+</div>
+</nav>
+<main class="flex-grow relative z-10 flex flex-col md:flex-row items-center justify-center w-full max-w-[1600px] mx-auto px-4 lg:px-12 py-4">
+<div class="absolute md:relative z-20 top-24 left-6 md:top-auto md:left-auto md:w-1/4 flex flex-col gap-6">
+<div class="bg-white rounded-[2.5rem] p-8 shadow-soft max-w-[340px] border border-slate-50">
+<div class="flex items-center justify-between mb-6">
+<span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Dominant Mood</span>
+<span class="flex items-center gap-1.5 text-primary text-[10px] font-bold bg-green-50 px-3 py-1.5 rounded-full">
+<span class="block size-1.5 rounded-full bg-primary"></span>
+                        LIVE
+                    </span>
+</div>
+<h2 class="text-4xl md:text-5xl font-bold text-slate-800 tracking-tight mb-4 leading-none">
+                    Innovation
+                </h2>
+<div class="h-1.5 w-12 bg-primary/30 rounded-full mb-6"></div>
+<p class="text-sm text-slate-500 leading-relaxed font-medium mb-6">
+                    Tech sector growth drives global optimism. Sentiment analysis shows a <span class="text-primary font-bold">+12%</span> spike in "Breakthrough" keywords.
+                </p>
+<button class="w-full py-3 rounded-xl bg-slate-50 text-slate-700 text-xs font-bold flex items-center justify-center gap-2">
+                    VIEW ANALYSIS
+                    <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+<div class="hidden md:flex flex-col gap-4 pl-4 mt-4">
+<div class="flex items-center gap-4 text-sm text-slate-400">
+<span class="flex items-center justify-center w-6 h-6 rounded-full bg-white text-primary text-[10px] font-bold shadow-sm">01</span>
+<span class="font-medium text-slate-600">AI Governance</span>
+</div>
+<div class="flex items-center gap-4 text-sm text-slate-400">
+<span class="flex items-center justify-center w-6 h-6 rounded-full bg-white text-primary text-[10px] font-bold shadow-sm">02</span>
+<span class="font-medium text-slate-600">Green Energy</span>
+</div>
+<div class="flex items-center gap-4 text-sm text-slate-400">
+<span class="flex items-center justify-center w-6 h-6 rounded-full bg-white text-primary text-[10px] font-bold shadow-sm">03</span>
+<span class="font-medium text-slate-600">Space Travel</span>
+</div>
+</div>
+</div>
+<div class="relative w-full md:w-2/4 aspect-square flex items-center justify-center my-[-20px] md:my-0">
+<div class="relative w-[320px] h-[320px] md:w-[650px] md:h-[650px] rounded-full flex items-center justify-center">
+<div class="absolute inset-0 bg-blue-100/40 rounded-full blur-[80px]"></div>
+<div class="relative w-full h-full rounded-full overflow-hidden shadow-[inset_-20px_-20px_50px_rgba(0,0,0,0.1),0_20px_50px_rgba(0,0,0,0.1)] bg-[#1c5696] z-10">
+<div class="absolute inset-0 rounded-full shadow-[inset_0_0_20px_rgba(255,255,255,0.2)] z-20 pointer-events-none"></div>
+<div class="absolute inset-0 w-full h-full" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAcT9C_MQJdW45gnRHpURwMeBl_MsKTHDdgHuJJaDPha6mjGPoj2bXh2TZF_5H67vTmM2Yg1b0cJNJSlwhhK3G0MctERNr5jxNUWh0rvSOoXbBbsQ6_KhkBVC2JNt308KjJkHGKM1l3qpWqxQGF5qFRwSyh-g9dueaUjY38U-RWI7q4VRujFvlRyxlaNt7tnUSi0Y_tcZms6F8_70Oi68Lt_CL-bNqrqBPO5ZSfU0zGiUmsUgp3s5GWpjP-Y6wd8ulDlQlIm405r9Q'); 
+                                background-size: cover; 
+                                filter: hue-rotate(200deg) saturate(0.8) brightness(1.1) contrast(0.9);">
+</div>
+<div class="absolute inset-0 w-[200%] h-full bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-40 mix-blend-screen"></div>
+</div>
+<div class="absolute inset-[-40px] rounded-full border border-slate-200/60 border-dashed"></div>
+<div class="absolute inset-[-80px] rounded-full border border-slate-100"></div>
+</div>
+</div>
+<div class="hidden md:flex md:w-1/4 flex-col gap-6 items-end">
+<div class="bg-white rounded-[2rem] p-6 shadow-soft w-72 border border-slate-50 relative overflow-hidden">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-1 bg-primary rounded-b-full"></div>
+<div class="flex items-center gap-4 mb-4 mt-2">
+<div class="p-3 rounded-2xl bg-green-50 text-primary">
+<span class="material-symbols-outlined text-[24px]">trending_up</span>
+</div>
+<div>
+<p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Sentiment Velocity</p>
+<p class="text-slate-800 font-bold text-xl">+24% <span class="text-xs font-normal text-slate-400">/hr</span></p>
+</div>
+</div>
+<div class="flex items-end gap-2 h-16 w-full pt-2">
+<div class="flex-1 bg-slate-100 rounded-t-lg h-[40%]"></div>
+<div class="flex-1 bg-slate-100 rounded-t-lg h-[70%]"></div>
+<div class="flex-1 bg-slate-100 rounded-t-lg h-[50%]"></div>
+<div class="flex-1 bg-slate-100 rounded-t-lg h-[80%]"></div>
+<div class="flex-1 bg-slate-100 rounded-t-lg h-[60%]"></div>
+<div class="flex-1 bg-primary/80 rounded-t-lg h-[90%] shadow-glow"></div>
+</div>
+</div>
+<div class="bg-white rounded-[2rem] p-6 shadow-soft w-72 mt-2 border border-slate-50 relative overflow-hidden">
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-12 h-1 bg-orange-400 rounded-b-full"></div>
+<div class="flex justify-between items-start mb-4 mt-2">
+<div>
+<p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest">Active Sources</p>
+<p class="text-slate-800 font-bold text-xl">14,205</p>
+</div>
+<span class="material-symbols-outlined text-slate-300 text-[24px]">hub</span>
+</div>
+<div class="flex -space-x-3 overflow-hidden py-2 pl-1">
+<img alt="News Source" class="inline-block h-8 w-8 rounded-full ring-4 ring-white shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0nKF1kF921ri1uiiJuXM7NFhiTQT7iMQfDnJn0rBVJMqMzMfztj9ZeBgOgYH_HTJpdUkspAnAa3Fl6O_bNXdW-VuJoyWtiTSKTHUcGIVgQm6q6LpPqJAJ6uG61nwBIPoNF1Ou1CHEC6-rtbBy1IlWASu-Kn73NsqxUHfMHIIAtZg-U2i-_JfcGjj28MoBA7Kc_ru-HtDI1jURw2gMcag9tzgHcj9J6NTh0tSFkBhxLEubIzJ8nYA7Ri_Vb5zF1t2Pnbv9MNs1lXY"/>
+<img alt="News Source" class="inline-block h-8 w-8 rounded-full ring-4 ring-white shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIKesYJHWIVDmsCuu9LuQA5V0bh-bfl-a8NqOPaZSzcm8ze0dQCbTxMx-yw_BdDqAI1QcltXsRu_ngChfG_D4KfGXvN8S9freo3xDNoLGecsx776VLiM1l-KpgtV-quyHEKJpzZHH01nd65OZfFP0VG8vGHtqWqD-ez8wtS0wUfBLqaBtseOfgXV2JmB3WdDhY7UFp_zuhVqHy52xhgjcd8GcnYMQo8n-TG1IdA4800m1OjLFP0y-q-1pL_Ydjuqjd5ggj5O8WSu4"/>
+<img alt="News Source" class="inline-block h-8 w-8 rounded-full ring-4 ring-white shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBxBQfMJYqLzgr2kHCH9vH_zo-5nH-hPr1Ea5E3yP0gAEqmYw-xpIs4p7c67KR4N2R8OfIiPDDOt1GgvKaxd1iENZB3S_UCo-rW-FMhf0n3lw34Ur8n1B-mphDGsvjwFqi3cklSyV3TrYvrMpINUImcQCM_ls6N1qsOpfDBcEKANe03Y9Z6vKYyI-3aA3QmOKMb0T0d6M9ZEfLUzH60gg0vVBSZusq7_o8h8v3SSLJlVFiWmxFuH9OTYfGxL323OJOK3Nq7E1VadA"/>
+<div class="h-8 w-8 rounded-full ring-4 ring-white bg-slate-100 flex items-center justify-center text-[9px] font-bold text-slate-500 shadow-sm">+99</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<div class="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/10 backdrop-blur-sm p-4">
+<div class="relative bg-white rounded-3xl shadow-modal w-full max-w-lg overflow-hidden animate-[float_4s_ease-in-out_infinite] border border-white/40 ring-1 ring-black/5">
+<div class="h-32 bg-slate-50 relative overflow-hidden">
+<div class="absolute top-[-50%] left-[-10%] w-[120%] h-[200%] bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 opacity-80"></div>
+<div class="absolute inset-0 flex items-center justify-center opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-9xl">public</span>
+</div>
+<button class="absolute top-4 right-4 p-2 bg-white/80 backdrop-blur-sm rounded-full text-slate-400 hover:text-slate-700 hover:bg-white transition-all shadow-sm">
+<span class="material-symbols-outlined text-xl">close</span>
+</button>
+</div>
+<div class="px-8 pb-8 -mt-10 relative">
+<div class="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-full shadow-sm border border-slate-100 mb-6">
+<img alt="South Korea Flag" class="w-5 h-5 rounded-full object-cover shadow-sm border border-slate-100" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjY2EmcUoV0-qL5-1-TNoKvL63DdrsT9zYCKkPOEZ4-RupVfkkcJW8ZkyXy6918Extb0erKghSLyGapThiIJW8OQN-JBLz4DFszMLqXQBEY93rlXgZqqoy07C7R2-NQvNJ7vTonY21o8KKN_m8Fcp5Gy3NtM2X-8qFvAMzq1QrFoRj9Hj0a4a-gDL8C83CqPBYC1rWas03ZRtS73w2IA_1iDMLKA8KqmS14HFM_o0McuXBF5NvjIqGRCGqXEFkhVJO1M2LTyEX2sg"/>
+<span class="text-sm font-bold text-slate-700 tracking-tight">South Korea</span>
+</div>
+<div class="mb-8 text-center">
+<p class="text-xs font-bold text-slate-400 uppercase tracking-[0.2em] mb-3">Dominant Topic</p>
+<h2 class="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-slate-800 to-slate-600 tracking-tight leading-tight">
+                    SEMICONDUCTOR
+                </h2>
+</div>
+<div class="flex flex-wrap justify-center gap-3 mb-8">
+<span class="px-4 py-1.5 rounded-full bg-blue-50 text-blue-600 text-xs font-bold border border-blue-100/50">Tech Growth</span>
+<span class="px-4 py-1.5 rounded-full bg-emerald-50 text-emerald-600 text-xs font-bold border border-emerald-100/50">Market Leader</span>
+<span class="px-4 py-1.5 rounded-full bg-amber-50 text-amber-600 text-xs font-bold border border-amber-100/50">Export Surge</span>
+</div>
+<div class="h-px w-full bg-slate-100 mb-6"></div>
+<div class="space-y-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400 text-lg">lightbulb</span>
+<h3 class="text-sm font-bold text-slate-800">Why this word?</h3>
+</div>
+<p class="text-sm text-slate-500 leading-relaxed">
+                    Recent announcements of massive government investment in domestic chip manufacturing facilities have dominated headlines. Sentiment is overwhelmingly positive regarding long-term economic stability and technological independence.
+                </p>
+</div>
+<div class="mt-8">
+<button class="w-full py-3.5 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-sm font-bold transition-colors flex items-center justify-center gap-2 shadow-lg shadow-slate-200">
+                    Full Regional Report
+                    <span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,44 @@
+{
+  "countryCode": "KR",
+  "mood": "Greed",
+  "bpm": 130,
+  "color": "#FFBF00",
+  "translations": {
+    "en": {
+      "word": "Real Estate",
+      "subTopics": [
+        "#HousingPrices",
+        "#Gangnam",
+        "#Speculation",
+        "#MarketVolatility",
+        "#Investment"
+      ],
+      "reason": "The headlines prominently feature the South Korean real estate market, particularly in affluent areas like Gangnam, with reports of significant price fluctuations, intense investment, and the impact of regulations. This indicates a high level of public and financial interest, driven by both the potential for profit and the risks involved.",
+      "country": "South Korea"
+    },
+    "ko": {
+      "word": "부동산",
+      "subTopics": [
+        "#집값",
+        "#강남아파트",
+        "#영끌",
+        "#부동산규제",
+        "#시장변동성"
+      ],
+      "reason": "헤드라인에서 강남 등 주요 지역의 부동산 시장이 크게 다뤄지고 있으며, 집값의 급격한 변동, '영끌' 투자 열풍, 그리고 규제 강화의 영향이 보도되고 있습니다. 이는 수익 추구와 잠재적 위험 모두에 대한 대중과 금융 시장의 높은 관심을 반영합니다.",
+      "country": "대한민국"
+    },
+    "ja": {
+      "word": "不動産",
+      "subTopics": [
+        "#住宅価格",
+        "#江南アパート",
+        "#投機",
+        "#市場変動",
+        "#不動産投資"
+      ],
+      "reason": "ヘッドラインでは、江南などの主要地域の不動産市場が大きく取り上げられており、住宅価格の急激な変動、「ヨンクル」（借金をしてでも投資する）熱、そして規制強化の影響が報じられています。これは、利益追求と潜在的なリスクの両方に対する国民と金融市場の高い関心を反映しています。",
+      "country": "韓国"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "countryCode": "JP",
+  "updatedAt": "2026-02-24T09:00:00.000Z",
+  "mood": "Conflict",
+  "bpm": 110,
+  "color": "#DC143C",
+  "translations": {
+    "en": {
+      "word": "Parliamentary Reform",
+      "subTopics": [
+        "LDP",
+        "Takaichi Sanae",
+        "Provisional Budget",
+        "Election Strategy",
+        "Leadership Challenges"
+      ],
+      "reason": "Japan's political landscape is currently dominated by intense internal power struggles within the ruling Liberal Democratic Party (LDP) and broader calls for parliamentary reform. Key figures like Sanae Takaichi are actively pushing for significant changes, challenging established \"resistance forces\" within the LDP, which reflects a deeper discontent with the party's current direction and leadership. This internal friction is exacerbated by criticisms from opposition figures like Ichiro Ozawa, who highlight the need for a publicly supported political force and question the LDP's coherence. Furthermore, discussions around a provisional budget and concerns over election distortion via SNS underscore the strategic maneuvering underway as parties prepare for future electoral contests and seek to reshape Japan's political future.",
+      "country": "Japan"
+    },
+    "ko": {
+      "word": "의회 개혁",
+      "subTopics": [
+        "자민당",
+        "다카이치 사나에",
+        "잠정 예산",
+        "선거 전략",
+        "리더십 도전"
+      ],
+      "reason": "일본의 정치 지형은 현재 집권 자유민주당(LDP) 내의 치열한 권력 투쟁과 광범위한 의회 개혁 요구로 인해 격동하고 있습니다. 다카이치 사나에와 같은 주요 인물들은 자민당 내의 기존 '저항 세력'에 도전하며 상당한 변화를 추진하고 있으며, 이는 당의 현재 방향과 리더십에 대한 깊은 불만을 반영하고 있습니다. 이러한 내부 갈등은 오자와 이치로와 같은 야당 인사들의 비판으로 더욱 심화되고 있는데, 그는 국민의 지지를 받는 정치 세력의 필요성을 강조하고 자민당의 결속력을 의문시하고 있습니다. 또한, 잠정 예산 편성 논의와 SNS를 통한 선거 왜곡 우려는 각 정당이 미래 선거를 준비하고 일본의 정치적 미래를 재편하려는 전략적 움직임을 보여주고 있습니다.",
+      "country": "일본"
+    },
+    "ja": {
+      "word": "議会改革",
+      "subTopics": [
+        "自民党",
+        "高市早苗",
+        "暫定予算",
+        "選挙戦略",
+        "リーダーシップ"
+      ],
+      "reason": "日本の政治情勢は現在、与党である自由民主党内の激しい権力闘争と、広範な議会改革の要求によって特徴づけられています。高市早苗氏のような主要人物は、自民党内の既存の「抵抗勢力」に挑戦し、抜本的な改革を積極的に推進しており、これは党の現状とリーダーシップに対する深い不満を反映しています。この内部摩擦は、小沢一郎氏のような野党からの批判によってさらに激化しており、国民に支持される勢力の必要性を強調し、自民党の結束に疑問を投げかけています。さらに、暫定予算編成に関する議論やSNSを利用した選挙歪曲への懸念は、各政党が将来の選挙戦に備え、日本の政治的未来を再構築しようとする戦略的な動きを浮き彫りにしています。",
+      "country": "日本"
+    }
+  }
+}

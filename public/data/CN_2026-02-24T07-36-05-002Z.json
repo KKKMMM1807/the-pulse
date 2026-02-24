@@ -1,0 +1,45 @@
+{
+  "countryCode": "CN",
+  "updatedAt": "2026-02-24T07:00:00.000Z",
+  "mood": "Greed",
+  "bpm": 130,
+  "color": "#FFD700",
+  "translations": {
+    "en": {
+      "word": "Spring Festival",
+      "subTopics": [
+        "Travel Rush",
+        "Holiday Economy",
+        "Cultural Celebrations",
+        "Xi Jinping Speech",
+        "Family Reunions"
+      ],
+      "reason": "China's Spring Festival (Lunar New Year) is not merely a holiday but the world's largest annual human migration, deeply intertwined with the nation's economic and social fabric. This year's record-breaking railway passenger numbers highlight a robust rebound in domestic consumption and mobility post-pandemic, signaling economic vitality. Politically, the festival serves as a crucial period for leadership to reinforce national unity and policy directives, as evidenced by Xi Jinping's address at the Spring Festival gathering. Culturally, it underscores the enduring importance of family reunion and traditional customs, reflecting the core values of Chinese society.",
+      "country": "China"
+    },
+    "ko": {
+      "word": "춘절",
+      "subTopics": [
+        "춘윈",
+        "명절 경제",
+        "문화 행사",
+        "시진핑 연설",
+        "가족 상봉"
+      ],
+      "reason": "중국의 춘절은 단순한 명절을 넘어 전 세계에서 가장 큰 연례 인구 이동이 일어나는 시기로, 국가의 경제 및 사회 구조와 깊이 연결되어 있습니다. 올해 기록적인 철도 승객 수는 팬데믹 이후 국내 소비와 이동성의 강력한 회복을 보여주며 경제 활력을 나타내고 있습니다. 정치적으로는 시진핑 주석의 춘절 단배회 연설에서 볼 수 있듯이, 지도부가 국가적 단결과 정책 방향을 재확인하는 중요한 시기입니다. 문화적으로는 가족 상봉과 전통 풍습의 지속적인 중요성을 강조하며 중국 사회의 핵심 가치를 반영하는 상황입니다.",
+      "country": "중국"
+    },
+    "ja": {
+      "word": "春節",
+      "subTopics": [
+        "帰省ラッシュ",
+        "祝日経済",
+        "文化行事",
+        "習近平演説",
+        "家族団欒"
+      ],
+      "reason": "中国の春節は単なる祝日ではなく、世界最大規模の年間人口移動が発生する時期であり、国家の経済と社会構造に深く結びついています。今年の鉄道旅客数の記録的な増加は、パンデミック後の国内消費と移動の力強い回復を示し、経済の活力を象徴しています。政治的には、習近平国家主席の春節祝賀会での演説に見られるように、指導部が国家の団結と政策の方向性を再確認する重要な期間です。文化的には、家族の再会と伝統的な慣習の永続的な重要性を強調し、中国社会の核心的価値観を反映しています。",
+      "country": "中国"
+    }
+  }
+}

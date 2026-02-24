@@ -1,0 +1,45 @@
+{
+  "countryCode": "JP",
+  "updatedAt": "2026-02-24T07:00:00.000Z",
+  "mood": "Conflict",
+  "bpm": 130,
+  "color": "#2C3E50",
+  "translations": {
+    "en": {
+      "word": "Election",
+      "subTopics": [
+        "House of Representatives election",
+        "Parliamentary debate",
+        "SNS influence",
+        "Fake news",
+        "Political reform"
+      ],
+      "reason": "Following a recent House of Representatives election, Japan is grappling with the immediate political aftermath, including parliamentary debates on critical policy issues like fiscal stimulus and consumption tax. A central theme emerging is the profound impact of social media and misinformation on election integrity and public discourse, prompting calls for regulation to safeguard democratic processes. This period of intense self-reflection among political parties, coupled with the struggles of the opposition, highlights Japan's unique challenge in adapting its traditionally structured political landscape to the rapid evolution of digital communication and its influence on voter behavior.",
+      "country": "Japan"
+    },
+    "ko": {
+      "word": "선거",
+      "subTopics": [
+        "중의원 선거",
+        "국회 논쟁",
+        "SNS 영향",
+        "가짜 뉴스",
+        "정치 개혁"
+      ],
+      "reason": "최근 중의원 선거 이후, 일본은 재정 정책과 소비세 감면 등 주요 정책에 대한 국회 대표 질문을 포함한 정치적 여파를 겪고 있습니다. 특히 소셜 미디어와 가짜 뉴스가 선거 결과와 여론에 미치는 영향에 대한 깊은 우려가 제기되며, 민주적 절차를 보호하기 위한 규제 논의가 활발합니다. 이는 전통적으로 미디어의 영향력이 강했던 일본 정치 지형에서 디지털 소통 방식의 급변이 유권자 행동과 민주주의에 미치는 새로운 도전을 보여주는 상황입니다.",
+      "country": "일본"
+    },
+    "ja": {
+      "word": "選挙",
+      "subTopics": [
+        "衆議院選挙",
+        "国会論戦",
+        "SNS影響",
+        "フェイクニュース",
+        "政治改革"
+      ],
+      "reason": "最近の衆議院選挙後、日本は財政政策や消費税減税などの重要政策に関する国会での代表質問を含め、その政治的余波に直面しています。特に、ソーシャルメディアとフェイクニュースが選挙結果や世論に与える影響に対する深い懸念が浮上しており、民主的プロセスを保護するための規制議論が活発化しています。これは、伝統的にメディアの影響力が強かった日本の政治状況において、デジタルコミュニケーションの急速な進化が有権者の行動や民主主義にもたらす新たな課題を浮き彫りにしています。",
+      "country": "日本"
+    }
+  }
+}

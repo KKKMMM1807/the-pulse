@@ -1,0 +1,45 @@
+{
+  "countryCode": "CN",
+  "updatedAt": "2026-02-24T09:00:00.000Z",
+  "mood": "Greed",
+  "bpm": 130,
+  "color": "#FFA500",
+  "translations": {
+    "en": {
+      "word": "Tourism",
+      "subTopics": [
+        "Spring Festival",
+        "Holiday Travel",
+        "Consumer Spending",
+        "Economic Recovery",
+        "Cultural Events"
+      ],
+      "reason": "China's unique emphasis on the Spring Festival as the most significant annual holiday drives an unparalleled surge in domestic tourism and related consumption. This period, often dubbed the world's largest annual human migration, is crucial for economic recovery and growth, reflecting the resilience of consumer demand after recent challenges. The government actively promotes cultural tourism and domestic travel to stimulate local economies, making the holiday's economic performance a key indicator of national sentiment and stability.",
+      "country": "China"
+    },
+    "ko": {
+      "word": "관광",
+      "subTopics": [
+        "춘절",
+        "명절 여행",
+        "소비 지출",
+        "경제 회복",
+        "문화 행사"
+      ],
+      "reason": "중국에서 춘절은 연중 가장 중요한 명절로, 이 기간 동안 국내 관광과 관련 소비가 전례 없는 급증을 보입니다. 이는 세계 최대 규모의 연례 인구 이동으로 불리며, 최근의 어려움 이후 경제 회복과 성장에 결정적인 역할을 하고 있습니다. 정부는 내수 경제 활성화를 위해 문화 관광과 국내 여행을 적극 장려하며, 명절 기간의 경제 성과는 국가의 정서와 안정성을 가늠하는 중요한 지표로 작용하고 있습니다.",
+      "country": "중국"
+    },
+    "ja": {
+      "word": "観光",
+      "subTopics": [
+        "春節",
+        "連休旅行",
+        "消費支出",
+        "経済回復",
+        "文化イベント"
+      ],
+      "reason": "中国では春節が年間で最も重要な祝日であり、この期間中に国内観光と関連消費が前例のない急増を見せます。これは世界最大規模の年間人口移動とも称され、近年の課題からの経済回復と成長にとって極めて重要です。政府は国内経済の活性化のため、文化観光や国内旅行を積極的に奨励しており、祝日期間の経済実績は国家の感情と安定性を示す重要な指標となっています。",
+      "country": "中国"
+    }
+  }
+}

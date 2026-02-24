@@ -1,0 +1,45 @@
+{
+  "countryCode": "UK",
+  "updatedAt": "2026-02-24T09:00:00.000Z",
+  "mood": "Conflict",
+  "bpm": 120,
+  "color": "#6A0572",
+  "translations": {
+    "en": {
+      "word": "Prince Andrew",
+      "subTopics": [
+        "Royal Family",
+        "Epstein Scandal",
+        "Buckingham Palace",
+        "Public Funding",
+        "Reputation Damage"
+      ],
+      "reason": "The United Kingdom maintains a unique relationship with its monarchy, viewing it as a central symbol of national identity and tradition. The ongoing allegations and recent revelations surrounding Prince Andrew, particularly concerning his association with Jeffrey Epstein and the financial implications for the Royal Family, represent a significant challenge to the institution's public image and perceived integrity. This is not merely a celebrity scandal but a matter that touches upon the funding, accountability, and moral standing of a core national institution, making it uniquely sensitive and impactful within the British context.",
+      "country": "United Kingdom"
+    },
+    "ko": {
+      "word": "앤드루 왕자",
+      "subTopics": [
+        "왕실",
+        "엡스타인 스캔들",
+        "버킹엄 궁전",
+        "공적 자금",
+        "명예 실추"
+      ],
+      "reason": "영국은 왕실을 국가 정체성과 전통의 상징으로 여기는 독특한 관계를 가지고 있습니다. 앤드루 왕자를 둘러싼 제프리 엡스타인과의 연루 의혹과 왕실 자금 지불에 대한 지속적인 폭로는 왕실의 대중적 이미지와 청렴성에 심각한 도전을 제기하고 있습니다. 이는 단순한 유명인 스캔들이 아니라, 영국의 핵심 국가 기관의 자금 조달, 책임, 도덕적 지위에 영향을 미치는 문제이므로 영국 내에서 특히 민감하고 파급력이 큰 상황입니다.",
+      "country": "영국"
+    },
+    "ja": {
+      "word": "アンドルー王子",
+      "subTopics": [
+        "王室",
+        "エプスタイン事件",
+        "バッキンガム宮殿",
+        "公的資金",
+        "名誉毀損"
+      ],
+      "reason": "英国は、王室を国家のアイデンティティと伝統の象徴として捉える独自の歴史的背景を持っています。アンドルー王子を巡るジェフリー・エプスタインとの関係や、王室からの資金支払に関する継続的な疑惑と暴露は、王室の公共イメージと誠実さに対し重大な挑戦を突きつけています。これは単なる有名人のスキャンダルではなく、英国の中核をなす国家機関の資金調達、説明責任、道徳的地位に関わる問題であり、英国独自の文脈において極めて敏感で影響力の大きい事柄となっています。",
+      "country": "英国"
+    }
+  }
+}

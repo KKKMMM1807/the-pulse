@@ -1,0 +1,45 @@
+{
+  "countryCode": "DE",
+  "updatedAt": "2026-02-24T07:00:00.000Z",
+  "mood": "Conflict",
+  "bpm": 120,
+  "color": "#DC143C",
+  "translations": {
+    "en": {
+      "word": "Political Integrity",
+      "subTopics": [
+        "AfD controversies",
+        "Electoral irregularities",
+        "Nepotism and corruption",
+        "Right-wing extremism protests",
+        "Government accountability"
+      ],
+      "reason": "Germany is currently grappling with significant challenges to its political integrity, a cornerstone of its post-war democratic identity. Recent headlines highlight internal party disputes within the AfD concerning \"Familienfilz\" and \"Sippen-Wirtschaft,\" alongside public protests against right-wing extremism, particularly targeting figures like Björn Höcke. Furthermore, local electoral irregularities, such as the invalidated mayoral election in Strausberg, and discussions around combating \"clan structures\" and \"Überkreuz-Anstellungen\" underscore a broader national concern for transparent and fair governance. These issues collectively reflect a period of heightened scrutiny over the ethical standards and democratic processes within German politics.",
+      "country": "Germany"
+    },
+    "ko": {
+      "word": "정치적 청렴성",
+      "subTopics": [
+        "AfD 논란",
+        "선거 부정",
+        "족벌주의",
+        "극우 시위",
+        "정부 책임"
+      ],
+      "reason": "독일은 전후 민주주의의 핵심 가치인 정치적 청렴성에 대한 중대한 도전에 직면해 있습니다. 최근 헤드라인은 AfD 내부의 '가족 경영' 및 '친족 경제' 논란과 함께, 비외른 회케와 같은 극우 인사들에 대한 대규모 반대 시위를 부각하고 있습니다. 또한, 슈트라우스베르크 시장 선거 무효화와 같은 지방 선거 부정 사례 및 '클랜 구조'와 '교차 고용'에 대한 엄격한 조치 논의는 투명하고 공정한 거버넌스에 대한 광범위한 국가적 우려를 반영하고 있습니다. 이러한 문제들은 독일 정치 내 윤리적 기준과 민주적 절차에 대한 면밀한 조사가 이루어지는 시기를 나타내고 있습니다.",
+      "country": "독일"
+    },
+    "ja": {
+      "word": "政治的清廉性",
+      "subTopics": [
+        "AfD論争",
+        "選挙不正",
+        "縁故主義",
+        "極右デモ",
+        "政府の説明責任"
+      ],
+      "reason": "ドイツは、戦後の民主主義の基盤である政治的清廉性に対し、現在重大な課題に直面しています。最近のヘッドラインでは、AfD内部における「家族経営」や「縁故経済」を巡る論争が報じられ、ビョルン・ヘッケのような極右勢力に対する大規模な抗議デモも発生しています。さらに、シュトラウスベルク市長選挙の無効化といった地方選挙における不正や、「クラン構造」および「相互雇用」への厳格な対応に関する議論は、透明で公正なガバナンスに対する国民全体の懸念を浮き彫りにしています。これらの問題は、ドイツ政治における倫理基準と民主的プロセスへの厳しい監視が続く時期を示しています。",
+      "country": "ドイツ"
+    }
+  }
+}

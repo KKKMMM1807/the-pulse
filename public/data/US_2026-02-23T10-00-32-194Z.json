@@ -1,0 +1,44 @@
+{
+  "countryCode": "US",
+  "mood": "Conflict",
+  "bpm": 110,
+  "color": "#CC0000",
+  "translations": {
+    "en": {
+      "word": "Conflict",
+      "subTopics": [
+        "#Geopolitics",
+        "#Diplomacy",
+        "#NationalSecurity",
+        "#PoliticalTension",
+        "#InternationalRelations"
+      ],
+      "reason": "Multiple headlines highlight diplomatic disputes with France and over Israel, ongoing US-Iran nuclear talks, and domestic political friction regarding the Justice Department and former President Trump. Internationally, there are reports of territorial disputes and calls for military aid, indicating a widespread atmosphere of disagreement and confrontation.",
+      "country": "United States"
+    },
+    "ko": {
+      "word": "갈등",
+      "subTopics": [
+        "#지정학",
+        "#외교",
+        "#국가안보",
+        "#정치적긴장",
+        "#국제관계"
+      ],
+      "reason": "프랑스와 이스라엘 관련 외교적 분쟁, 미국-이란 핵 협상, 그리고 법무부와 트럼프 전 대통령에 대한 국내 정치적 마찰 등 여러 헤드라인이 갈등을 부각합니다. 국제적으로는 영토 분쟁과 군사 지원 요청 보도가 있어 전반적인 불화와 대립의 분위기를 나타냅니다.",
+      "country": "미국"
+    },
+    "ja": {
+      "word": "紛争",
+      "subTopics": [
+        "#地政学",
+        "#外交",
+        "#国家安全保障",
+        "#政治的緊張",
+        "#国際関係"
+      ],
+      "reason": "フランスやイスラエルに関する外交上の対立、米国とイランの核協議、そして司法省やトランプ前大統領に関する国内政治的摩擦など、複数の見出しが紛争を強調しています。国際的にも領土問題や軍事支援の要請が報じられており、広範な不和と対立の雰囲気が示されています。",
+      "country": "米国"
+    }
+  }
+}

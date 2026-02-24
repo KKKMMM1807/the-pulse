@@ -1,0 +1,45 @@
+{
+  "countryCode": "RU",
+  "updatedAt": "2026-02-24T09:00:00.000Z",
+  "mood": "Conflict",
+  "bpm": 140,
+  "color": "#CC0000",
+  "translations": {
+    "en": {
+      "word": "Special Military Operation",
+      "subTopics": [
+        "Ukraine conflict",
+        "drone attacks",
+        "military casualties",
+        "national defense",
+        "border security"
+      ],
+      "reason": "Russia's unique geopolitical position and ongoing conflict with Ukraine make the Special Military Operation (SVO) the most critical and pervasive topic. The nation is grappling with direct military engagements, evidenced by reports of casualties among its citizens and high-profile drone attacks on its territory, particularly before significant national holidays. These events underscore a heightened state of national security concern, requiring constant military readiness and strategic responses to external threats. The SVO profoundly impacts Russian society, economy, and political discourse, shaping domestic priorities and international relations.",
+      "country": "Russia"
+    },
+    "ko": {
+      "word": "특별 군사 작전",
+      "subTopics": [
+        "우크라이나 분쟁",
+        "드론 공격",
+        "군사 사상자",
+        "국가 방위",
+        "국경 안보"
+      ],
+      "reason": "러시아의 고유한 지정학적 위치와 우크라이나와의 지속적인 분쟁으로 인해 특별 군사 작전(SVO)은 가장 중요하고 광범위한 주제로 부상하고 있습니다. 러시아는 자국민의 사상자 발생 보고와 국경 지역에 대한 드론 공격 등 직접적인 군사적 교전에 직면해 있습니다. 이는 특히 국군의 날과 같은 중요한 국경일을 앞두고 국가 안보에 대한 높은 우려를 나타내고 있습니다. 이러한 사건들은 지속적인 군사 대비 태세와 외부 위협에 대한 전략적 대응을 요구하며, 러시아 사회, 경제, 정치 담론에 깊은 영향을 미치고 국내 우선순위와 국제 관계를 형성하고 있습니다.",
+      "country": "러시아"
+    },
+    "ja": {
+      "word": "特別軍事作戦",
+      "subTopics": [
+        "ウクライナ紛争",
+        "ドローン攻撃",
+        "軍事死傷者",
+        "国家防衛",
+        "国境警備"
+      ],
+      "reason": "ロシアの独特な地政学的状況とウクライナとの継続的な紛争により、特別軍事作戦（SVO）は最も重要かつ広範な話題となっています。国民の死傷者報告や領土へのドローン攻撃など、直接的な軍事交戦に直面しています。特に祖国防衛者の日などの重要な祝日を前に、これらの攻撃は国家安全保障に対する高い懸念を浮き彫りにしています。これらの出来事は、絶え間ない軍事準備と外部からの脅威に対する戦略的対応を必要とし、ロシア社会、経済、政治的言説に深く影響を与え、国内の優先事項と国際関係を形成しています。",
+      "country": "ロシア"
+    }
+  }
+}
