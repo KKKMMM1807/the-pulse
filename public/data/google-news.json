@@ -1,33 +1,33 @@
 {
-    "sentiment": "Innovation",
-    "updatedAt": "2026-02-24T08:00:00.000Z",
-    "translations": {
-        "en": {
-            "title": "GOOGLE CORP.",
-            "headlines": [
-                "Google announces major AI integration across Workspace products.",
-                "Alphabet's Cloud revenue continues to grow at double-digit rates.",
-                "New innovations in DeepMind are setting the pace for LLM research."
-            ],
-            "footer": "Updated daily at 08:00 KST"
-        },
-        "ko": {
-            "title": "GOOGLE의 소식은?",
-            "headlines": [
-                "구글, 워크스페이스 전반에 대규모 AI 통합 발표",
-                "알파벳 클라우드 수익률 두 자릿수 성장세 지속",
-                "딥마인드의 새로운 혁신으로 거대언어모델(LLM) 연구 가속화"
-            ],
-            "footer": "매일 오전 08:00 (KST) 업데이트"
-        },
-        "ja": {
-            "title": "GOOGLEの最新ニュース",
-            "headlines": [
-                "Google、Workspace製品へのAI大規模統合を発表",
-                "Alphabetのクラウド事業、2桁成長を維持",
-                "DeepMindの新技術によりLLM研究がさらに加速"
-            ],
-            "footer": "毎日午前 08:00 (KST) 更新"
-        }
+  "sentiment": "Innovation",
+  "updatedAt": "2024-07-30T10:30:00.000Z",
+  "translations": {
+    "en": {
+      "title": "GOOGLE CORP.",
+      "headlines": [
+        "Alphabet is significantly increasing its capital expenditure in AI, solidifying its leadership and competitive advantage in the sector.",
+        "Google Cloud is experiencing strong growth, with its performance and revenue generation highlighted as key drivers for Alphabet's overall valuation and AI capabilities.",
+        "The company shows a positive financial outlook, with stock stability, analyst upgrades, and strategic collaborations underscoring its continued expansion in AI and cloud services."
+      ],
+      "footer": "Updated daily at 08:00 KST"
+    },
+    "ko": {
+      "title": "GOOGLE의 소식은?",
+      "headlines": [
+        "알파벳은 AI 분야에 대한 자본 지출을 크게 늘려 해당 부문에서의 리더십과 경쟁 우위를 강화하고 있습니다.",
+        "구글 클라우드는 강력한 성장을 보이며, 그 실적과 수익 창출이 알파벳의 전반적인 가치 평가와 AI 역량의 핵심 동력으로 부각되고 있습니다.",
+        "회사는 주가 안정, 애널리스트 상향 조정, 전략적 협력을 통해 AI 및 클라우드 서비스 분야에서의 지속적인 확장을 보여주며 긍정적인 재무 전망을 나타냅니다."
+      ],
+      "footer": "매일 오전 08:00 (KST) 업데이트"
+    },
+    "ja": {
+      "title": "GOOGLEの最新ニュース",
+      "headlines": [
+        "AlphabetはAI分野への設備投資を大幅に増やし、この分野でのリーダーシップと競争優位性を強化しています。",
+        "Google Cloudは力強い成長を遂げており、その業績と収益創出がAlphabet全体の評価とAI能力の主要な推進力として注目されています。",
+        "同社は、株価の安定、アナリストによる格上げ、戦略的提携を通じて、AIおよびクラウドサービス分野での継続的な拡大を示しており、良好な財務見通しを維持しています。"
+      ],
+      "footer": "毎日午前 08:00 (KST) 更新"
     }
+  }
 }
