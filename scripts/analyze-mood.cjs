@@ -89,7 +89,7 @@ ${headlines.join('\n')}
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 contents: [{ parts: [{ text: prompt }] }],
-                generationConfig: { temperature: 0.2, responseMimeType: "application/json" }
+                generationConfig: { temperature: 0.2 }
             })
         });
 
@@ -99,9 +99,14 @@ ${headlines.join('\n')}
         }
 
         const data = await response.json();
-        const textResponse = data.candidates[0].content.parts[0].text;
+        if (!data.candidates || !data.candidates[0]) {
+            throw new Error(`Gemini Error: ${JSON.stringify(data)}`);
+        }
+        let textResponse = data.candidates[0].content.parts[0].text;
 
-        // Ensure valid JSON
+        // Strip markdown code blocks if present
+        textResponse = textResponse.replace(/```json/g, '').replace(/```/g, '').trim();
+
         const parsed = JSON.parse(textResponse);
         return parsed;
 

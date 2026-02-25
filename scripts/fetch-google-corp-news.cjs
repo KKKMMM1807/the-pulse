@@ -55,7 +55,7 @@ async function analyzeWithGemini(headlines) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       contents: [{ parts: [{ text: prompt }] }],
-      generationConfig: { temperature: 0.2, responseMimeType: "application/json" }
+      generationConfig: { temperature: 0.2 }
     })
   });
 
@@ -63,7 +63,9 @@ async function analyzeWithGemini(headlines) {
   if (!data.candidates || !data.candidates[0]) {
     throw new Error(`Gemini Error: ${JSON.stringify(data)}`);
   }
-  return JSON.parse(data.candidates[0].content.parts[0].text);
+  let textResponse = data.candidates[0].content.parts[0].text;
+  textResponse = textResponse.replace(/```json/g, '').replace(/```/g, '').trim();
+  return JSON.parse(textResponse);
 }
 
 async function run() {
