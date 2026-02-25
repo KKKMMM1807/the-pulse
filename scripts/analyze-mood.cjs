@@ -120,34 +120,24 @@ async function run() {
     const dataPath = path.join(__dirname, '../public/data');
     if (!fs.existsSync(dataPath)) fs.mkdirSync(dataPath, { recursive: true });
 
-    let existingMoodData = {};
-    const moodJsonPath = path.join(dataPath, 'mood.json');
-    if (fs.existsSync(moodJsonPath)) {
-        try {
-            existingMoodData = JSON.parse(fs.readFileSync(moodJsonPath, 'utf8'));
-        } catch (e) {
-            console.warn("Could not read existing mood.json, starting fresh.");
-        }
-    }
-
     const results = {};
-    for (const key of Object.keys(existingMoodData)) {
-        if (COUNTRIES[key]) {
-            results[key] = existingMoodData[key];
-        }
-    }
+    // Load existing data ONLY to preserve countries we're NOT analyzing in this run
+    // But we are analyzing all of them in COUNTRIES, so results starts empty.
 
-    // Compute the Korea Standard Time (UTC+9) aligned to the nearest 2-hour block
     const nowUTC = new Date();
+    // KST is UTC+9
     const nowKST = new Date(nowUTC.getTime() + 9 * 60 * 60 * 1000);
-    const kstHour = nowKST.getUTCHours();
+    const kstHour = nowKST.getHours();
     const alignedHour = Math.floor(kstHour / 2) * 2;
-    const updatedAtKST = new Date(nowKST);
-    updatedAtKST.setUTCHours(alignedHour, 0, 0, 0);
-    // Convert back to ISO string (in UTC)
-    const updatedAtISO = new Date(updatedAtKST.getTime() - 9 * 60 * 60 * 1000).toISOString();
 
-    const dateStr = nowUTC.toISOString().replace(/[:.]/g, '-');
+    // Create a display-friendly KST date string for filenames
+    const kstDate = nowKST.toISOString().split('T')[0]; // YYYY-MM-DD
+    const updatedAtISO = new Date(nowKST.setHours(alignedHour, 0, 0, 0)).toISOString();
+    const dateStr = `${kstDate}T${String(alignedHour).padStart(2, '0')}-00-00`;
+
+    console.log(`Current Time (KST): ${nowKST.toLocaleString()}`);
+    console.log(`Aligned Hour: ${alignedHour}:00`);
+    console.log(`Update Timestamp: ${updatedAtISO}`);
 
     for (const [code, info] of Object.entries(COUNTRIES)) {
         console.log(`\nProcessing ${info.name} (${code})...`);
