@@ -3,7 +3,7 @@ const path = require('path');
 const fetch = require('node-fetch');
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
+const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
 
 const COUNTRIES = {
     KR: { name: 'South Korea', url: 'https://news.google.com/rss?ceid=KR:ko&hl=ko' },
@@ -168,6 +168,7 @@ async function run() {
             console.error(`Failed to process ${code} after retries:`, error);
             console.log(`Fallback: Keeping previous data for ${code}.`);
             // results[code] already contains existingMoodData[code] from the spread at start
+            process.exitCode = 1; // 깃허브 액션에서 ❌ 오류가 뜨도록 설정
         }
     }
 

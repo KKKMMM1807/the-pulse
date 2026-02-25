@@ -3,7 +3,7 @@ const path = require('path');
 const fetch = require('node-fetch');
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${GEMINI_API_KEY}`;
+const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
 
 // RSS for Google/Alphabet news
 const RSS_URL = 'https://news.google.com/rss/search?q=Alphabet+Inc+OR+Google+AI+OR+Google+Cloud&hl=en-US&gl=US&ceid=US:en';
@@ -82,6 +82,7 @@ async function run() {
     console.log("google-news.json created successfully.");
   } catch (e) {
     console.error("Failed to fetch Google news:", e);
+    process.exit(1); // 깃허브 액션에서 ❌ 오류가 뜨도록 강제 종료
   }
 }
 
