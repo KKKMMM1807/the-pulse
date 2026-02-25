@@ -3,7 +3,7 @@ const path = require('path');
 const fetch = require('node-fetch');
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY; // Requires GEMINI_API_KEY to be set
-const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
+const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${GEMINI_API_KEY}`;
 
 const COUNTRIES = {
     KR: { name: 'South Korea', url: 'https://news.google.com/rss?ceid=KR:ko&hl=ko' },
@@ -123,6 +123,7 @@ ${headlines.join('\n')}
 
 async function run() {
     const dataPath = path.join(__dirname, '../public/data');
+    const moodJsonPath = path.join(dataPath, 'mood.json');
     if (!fs.existsSync(dataPath)) fs.mkdirSync(dataPath, { recursive: true });
 
     const results = {};
