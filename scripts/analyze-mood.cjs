@@ -16,7 +16,7 @@ const COUNTRIES = {
     FR: { name: 'France', url: 'https://news.google.com/rss?ceid=FR:fr&hl=fr' }
 };
 
-const SLEEP_MS = 5000;
+const SLEEP_MS = 15000; // 기존 5000에서 15초로 늘려 기본적으로 한도에 안 걸리게 조정
 const MAX_RETRIES = 3;
 
 async function sleep(ms) {
@@ -93,8 +93,14 @@ async function analyzeWithGemini(countryName, headlines, retryCount = 0) {
     } catch (error) {
         console.error(`Attempt ${retryCount + 1} failed for ${countryName}: ${error.message}`);
         if (retryCount < MAX_RETRIES - 1) {
-            console.log(`Retrying in 2 seconds...`);
-            await sleep(2000);
+            let waitTime = 2000;
+            if (error.message.includes('429') || error.message.includes('Quota')) {
+                console.log(`Rate limit/Quota exceeded. Waiting 35 seconds to reset...`);
+                waitTime = 35000;
+            } else {
+                console.log(`Retrying in 2 seconds...`);
+            }
+            await sleep(waitTime);
             return analyzeWithGemini(countryName, headlines, retryCount + 1);
         }
         throw error;
