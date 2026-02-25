@@ -1,8 +1,8 @@
 name: Update Global Moods
 on:
   schedule:
-    - cron: '0 */4 * * *' # Every 4 hours (Free tier limit optimization)
-  workflow_dispatch: # Allow manual trigger
+    - cron: '0 */2 * * *' # Every 2 hours
+  workflow_dispatch:
 
 jobs:
   analyze-and-update:
@@ -27,12 +27,25 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.PULSE_API }}
         run: node scripts/analyze-mood.cjs
 
+      - name: Run Google Corp News Update
+        env:
+          GEMINI_API_KEY: ${{ secrets.PULSE_API }}
+        run: node scripts/fetch-google-corp-news.cjs
+
+      - name: Auto Commit Data to GitHub
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add public/data/
+          git commit -m 'chore: daily data archive [skip ci]' || echo "No changes to commit"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Sync data to Cloudflare R2
         run: |
-          # Sync everything in public/data to the bucket
-          # --endpoint-url uses the R2 custom endpoint
-          # --region auto is required for R2
-          aws s3 sync public/data/ s3://thepulse/data/ --endpoint-url ${{ secrets.R2_ENDPOINT }} --region auto
+          # Now it safe to use --delete because local data is synced with history
+          aws s3 sync public/data/ s3://thepulse/data/ --endpoint-url ${{ secrets.R2_ENDPOINT }} --region auto --delete
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
