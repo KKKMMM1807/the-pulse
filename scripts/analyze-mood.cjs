@@ -3,7 +3,7 @@ const path = require('path');
 const fetch = require('node-fetch');
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
+const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
 
 const COUNTRIES = {
     KR: { name: 'South Korea', url: 'https://news.google.com/rss?ceid=KR:ko&hl=ko' },
@@ -16,8 +16,8 @@ const COUNTRIES = {
     FR: { name: 'France', url: 'https://news.google.com/rss?ceid=FR:fr&hl=fr' }
 };
 
-const SLEEP_MS = 15000; // 기존 5000에서 15초로 늘려 기본적으로 한도에 안 걸리게 조정
-const MAX_RETRIES = 3;
+const SLEEP_MS = 15000; // 기본적으로 한도에 안 걸리게 15초 간격으로 요청
+const MAX_RETRIES = 5; // rate limit 대기를 위해 리트라이 횟수를 늘림
 
 async function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -94,9 +94,16 @@ async function analyzeWithGemini(countryName, headlines, retryCount = 0) {
         console.error(`Attempt ${retryCount + 1} failed for ${countryName}: ${error.message}`);
         if (retryCount < MAX_RETRIES - 1) {
             let waitTime = 2000;
-            if (error.message.includes('429') || error.message.includes('Quota')) {
-                console.log(`Rate limit/Quota exceeded. Waiting 35 seconds to reset...`);
-                waitTime = 35000;
+            if (error.message.includes('429') || error.message.includes('Quota') || error.message.includes('RESOURCE_EXHAUSTED')) {
+                let retryDelayMatch = error.message.match(/"retryDelay":\s*"(\d+)s"/);
+                if (retryDelayMatch && retryDelayMatch[1]) {
+                    const delaySec = parseInt(retryDelayMatch[1], 10);
+                    waitTime = (delaySec + 2) * 1000; // 요청된 대기 시간보다 2초 더 여유롭게 대기
+                    console.log(`Rate limit exceeded. According to API, waiting ${delaySec + 2} seconds to reset...`);
+                } else {
+                    waitTime = 60000; // 명시된 대기시간이 없으면 무조건 60초 대기
+                    console.log(`Rate limit exceeded. Waiting 60 seconds to reset...`);
+                }
             } else {
                 console.log(`Retrying in 2 seconds...`);
             }
