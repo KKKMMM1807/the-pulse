@@ -3,23 +3,23 @@ const path = require('path');
 const fetch = require('node-fetch');
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`;
+const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
 
 // RSS for Google/Alphabet news
 const RSS_URL = 'https://news.google.com/rss/search?q=Alphabet+Inc+OR+Google+AI+OR+Google+Cloud&hl=en-US&gl=US&ceid=US:en';
 
 async function fetchHeadlines(url) {
-    const response = await fetch(url);
-    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-    const text = await response.text();
-    const titles = text.match(/<title>(.*?)<\/title>/g) || [];
-    return titles.map(t => t.replace(/<\/?title>/g, '')).slice(1, 15);
+  const response = await fetch(url);
+  if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+  const text = await response.text();
+  const titles = text.match(/<title>(.*?)<\/title>/g) || [];
+  return titles.map(t => t.replace(/<\/?title>/g, '')).slice(1, 15);
 }
 
 async function analyzeWithGemini(headlines) {
-    if (!GEMINI_API_KEY) throw new Error("GEMINI_API_KEY missing");
+  if (!GEMINI_API_KEY) throw new Error("GEMINI_API_KEY missing");
 
-    const prompt = `Analyze these Google/Alphabet Inc. headlines and provide a summary in 3 bullet points for each language: English, Korean, and Japanese. 
+  const prompt = `Analyze these Google/Alphabet Inc. headlines and provide a summary in 3 bullet points for each language: English, Korean, and Japanese. 
     Focus on AI, Cloud, and Innovation. 
     Also provide a 'sentiment' word (e.g. Bullish, Neutral, Volatile).
     
@@ -50,34 +50,37 @@ async function analyzeWithGemini(headlines) {
     ${headlines.join('\n')}
     `;
 
-    const response = await fetch(GEMINI_API_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            contents: [{ parts: [{ text: prompt }] }],
-            generationConfig: { temperature: 0.2, response_mime_type: "application/json" }
-        })
-    });
+  const response = await fetch(GEMINI_API_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      contents: [{ parts: [{ text: prompt }] }],
+      generationConfig: { temperature: 0.2, response_mime_type: "application/json" }
+    })
+  });
 
-    const data = await response.json();
-    return JSON.parse(data.candidates[0].content.parts[0].text);
+  const data = await response.json();
+  if (!data.candidates || !data.candidates[0]) {
+    throw new Error(`Gemini Error: ${JSON.stringify(data)}`);
+  }
+  return JSON.parse(data.candidates[0].content.parts[0].text);
 }
 
 async function run() {
-    const dataPath = path.join(__dirname, '../public/data');
-    if (!fs.existsSync(dataPath)) fs.mkdirSync(dataPath, { recursive: true });
+  const dataPath = path.join(__dirname, '../public/data');
+  if (!fs.existsSync(dataPath)) fs.mkdirSync(dataPath, { recursive: true });
 
-    try {
-        console.log("Fetching Google headlines...");
-        const headlines = await fetchHeadlines(RSS_URL);
-        console.log("Analyzing with Gemini...");
-        const result = await analyzeWithGemini(headlines);
+  try {
+    console.log("Fetching Google headlines...");
+    const headlines = await fetchHeadlines(RSS_URL);
+    console.log("Analyzing with Gemini...");
+    const result = await analyzeWithGemini(headlines);
 
-        fs.writeFileSync(path.join(dataPath, 'google-news.json'), JSON.stringify(result, null, 2));
-        console.log("google-news.json created successfully.");
-    } catch (e) {
-        console.error("Failed to fetch Google news:", e);
-    }
+    fs.writeFileSync(path.join(dataPath, 'google-news.json'), JSON.stringify(result, null, 2));
+    console.log("google-news.json created successfully.");
+  } catch (e) {
+    console.error("Failed to fetch Google news:", e);
+  }
 }
 
 run();

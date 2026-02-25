@@ -24,12 +24,12 @@ jobs:
 
       - name: Run Mood Analysis
         env:
-          GEMINI_API_KEY: ${{ secrets.PULSE_API }}
+          GEMINI_API_KEY: ${{ secrets.PULSE_API || secrets.GEMINI_API_KEY }}
         run: node scripts/analyze-mood.cjs
 
       - name: Run Google Corp News Update
         env:
-          GEMINI_API_KEY: ${{ secrets.PULSE_API }}
+          GEMINI_API_KEY: ${{ secrets.PULSE_API || secrets.GEMINI_API_KEY }}
         run: node scripts/fetch-google-corp-news.cjs
 
       - name: Auto Commit Data to GitHub
