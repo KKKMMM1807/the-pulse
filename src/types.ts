@@ -1,4 +1,4 @@
-export type Language = 'ko' | 'en' | 'ja';
+export type Language = 'ko' | 'en' | 'zh';
 export type Theme = 'dark' | 'light';
 export type Mood = 'Panic' | 'Calm' | 'Greed' | 'Innovation' | 'Conflict';
 

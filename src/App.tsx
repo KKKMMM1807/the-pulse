@@ -5,23 +5,99 @@ import { mockMoodData, translations } from './mockData';
 import type { Language, Theme, MoodData } from './types';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  Moon, Sun, Languages, ArrowUpRight, HeartPulse,
+  Moon, Sun, Languages, HeartPulse,
   Calendar,
-  X, Check, LogOut, User as UserIcon
+  X, Check, LogOut, User as UserIcon, Newspaper
 } from 'lucide-react';
 import { supabase } from './lib/supabase';
 import type { User } from '@supabase/supabase-js';
 
 import * as THREE from 'three';
 
+// Country name translations for fallback
+const countryNames: Record<string, Record<Language, string>> = {
+  KR: { en: 'South Korea', ko: '대한민국', zh: '韩国' },
+  US: { en: 'United States', ko: '미국', zh: '美国' },
+  UK: { en: 'United Kingdom', ko: '영국', zh: '英国' },
+  CN: { en: 'China', ko: '중국', zh: '中国' },
+  RU: { en: 'Russia', ko: '러시아', zh: '俄罗斯' },
+};
+
+// Guess a Mood category from a keyword
+const guessMood = (keyword: string): MoodData['mood'] => {
+  const lower = (keyword || '').toLowerCase();
+  if (['panic', 'chaos', 'fear', 'crisis', 'turbulence', 'turbulent', 'anxiety', 'shock'].some(w => lower.includes(w))) return 'Panic';
+  if (['calm', 'stable', 'peace', 'slow', 'steady', 'resilience', 'resilient'].some(w => lower.includes(w))) return 'Calm';
+  if (['greed', 'growth', 'vibrancy', 'vibrant', 'boom', 'surge', 'rally'].some(w => lower.includes(w))) return 'Greed';
+  if (['innovation', 'breakthrough', 'tech', 'progress', 'momentum'].some(w => lower.includes(w))) return 'Innovation';
+  if (['conflict', 'tension', 'reform', 'strike', 'disquiet', 'unrest', 'division'].some(w => lower.includes(w))) return 'Conflict';
+  return 'Calm';
+};
+
+// Normalize R2 data (keyword/hashtags/explanation format) to frontend MoodData format
+const normalizeCountryData = (code: string, raw: Record<string, unknown>): MoodData => {
+  if (raw.word && raw.subTopics && raw.translations) {
+    return raw as unknown as MoodData;
+  }
+
+  const keyword = (raw.keyword as string) || (raw.word as string) || 'Unknown';
+  const hashtags = (raw.hashtags as string[]) || (raw.subTopics as string[]) || [];
+  const explanation = (raw.explanation as string) || (raw.reason as string) || '';
+  const bpm = (raw.bpm as number) || 80;
+  const color = (raw.color as string) || '#00F260';
+  const mood = (raw.mood as MoodData['mood']) || guessMood(keyword);
+  const updatedAt = raw.updatedAt as string | undefined;
+
+  const names = countryNames[code] || { en: code, ko: code, zh: code };
+
+  return {
+    country: names.en,
+    countryCode: code,
+    mood,
+    word: keyword,
+    subTopics: hashtags.map((h: string) => h.replace(/^#+/, '')),
+    reason: explanation,
+    bpm,
+    color,
+    updatedAt,
+    translations: (raw.translations as MoodData['translations']) || {
+      en: {
+        word: keyword,
+        subTopics: hashtags.map((h: string) => h.replace(/^#+/, '')),
+        reason: explanation,
+        country: names.en,
+      },
+      ko: {
+        word: keyword,
+        subTopics: hashtags.map((h: string) => h.replace(/^#+/, '')),
+        reason: explanation,
+        country: names.ko,
+      },
+      zh: {
+        word: keyword,
+        subTopics: hashtags.map((h: string) => h.replace(/^#+/, '')),
+        reason: explanation,
+        country: names.zh,
+      },
+    },
+  };
+};
+
 // Mood label translations per language
 const moodLabels: Record<string, Record<Language, string>> = {
-  Panic: { ko: '공황', en: 'Panic', ja: 'パニック' },
-  Calm: { ko: '안정', en: 'Calm', ja: '落ち着き' },
-  Greed: { ko: '탐욕', en: 'Greed', ja: '強欲' },
-  Innovation: { ko: '혁신', en: 'Innovation', ja: 'イノベーション' },
-  Conflict: { ko: '긴장', en: 'Conflict', ja: '緊張' },
+  Panic: { ko: '공황', en: 'Panic', zh: '恐慌' },
+  Calm: { ko: '안정', en: 'Calm', zh: '平静' },
+  Greed: { ko: '탐욕', en: 'Greed', zh: '贪婪' },
+  Innovation: { ko: '혁신', en: 'Innovation', zh: '创新' },
+  Conflict: { ko: '긴장', en: 'Conflict', zh: '冲突' },
 };
+
+// Tech news type
+interface TechNewsData {
+  sentiment: string;
+  updatedAt: string;
+  translations: Record<Language, { title: string; headlines: string[]; footer: string }>;
+}
 
 // Helper to ensure colors are visible in both dark/light modes
 const getAdaptiveColor = (color: string, theme: Theme) => {
@@ -32,13 +108,11 @@ const getAdaptiveColor = (color: string, theme: Theme) => {
     c.getHSL(hsl);
 
     if (theme === 'dark') {
-      // In dark mode, ensure lightness is at least 0.65 for high contrast
       if (hsl.l < 0.6) hsl.l = 0.65;
-      if (hsl.s < 0.4) hsl.s = 0.8; // Boost saturation
+      if (hsl.s < 0.4) hsl.s = 0.8;
     } else {
-      // In light mode, ensure it's not too pale
       if (hsl.l > 0.6) hsl.l = 0.45;
-      if (hsl.s < 0.4) hsl.s = 0.7; // Ensure vibrancy
+      if (hsl.s < 0.4) hsl.s = 0.7;
     }
 
     c.setHSL(hsl.h, hsl.s, hsl.l);
@@ -53,23 +127,22 @@ const App: React.FC = () => {
   const [theme, setTheme] = useState<Theme>(() => (localStorage.getItem('theme') as Theme) || 'dark');
   const [moodData, setMoodData] = useState<Record<string, MoodData>>(mockMoodData);
   const [selectedCountry, setSelectedCountry] = useState<MoodData>(mockMoodData.KR);
-  const [googleNews, setGoogleNews] = useState<{
-    sentiment: string,
-    updatedAt: string,
-    translations: Record<Language, { title: string, headlines: string[], footer: string }>
-  } | null>(null);
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const [isTimelineOpen, setIsTimelineOpen] = useState(false);
-  const [isProMode, setIsProMode] = useState(false);
+  const [isTechNewsOpen, setIsTechNewsOpen] = useState(false);
   const [user, setUser] = useState<User | null>(null);
 
+  // Tech news states
+  const [googleNews, setGoogleNews] = useState<TechNewsData | null>(null);
+  const [elonMuskNews, setElonMuskNews] = useState<TechNewsData | null>(null);
+  const [nvidiaNews, setNvidiaNews] = useState<TechNewsData | null>(null);
+  const [activeTechTab, setActiveTechTab] = useState<'google' | 'elonmusk' | 'nvidia'>('google');
+
   useEffect(() => {
-    // Get initial session
     supabase.auth.getSession().then(({ data: { session } }) => {
       setUser(session?.user ?? null);
     });
 
-    // Listen for auth changes
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null);
     });
@@ -102,12 +175,10 @@ const App: React.FC = () => {
     country: selectedCountry.country
   };
 
-  // Format the updatedAt timestamp according to KST-aligned 2-hour slots
+  // Format the updatedAt timestamp - show CURRENT real time in KST
   const formatTime = (isoString?: string) => {
     if (!isoString) return '';
-    // Parse the ISO string and display in KST (UTC+9)
     const d = new Date(isoString);
-    // Add 9 hours to get KST
     const kst = new Date(d.getTime() + 9 * 60 * 60 * 1000);
     const year = kst.getUTCFullYear();
     const month = String(kst.getUTCMonth() + 1).padStart(2, '0');
@@ -116,28 +187,12 @@ const App: React.FC = () => {
     const minute = String(kst.getUTCMinutes()).padStart(2, '0');
 
     if (lang === 'ko') {
-      return `${year}년 ${month}월 ${day}일 ${hour}:${minute} 기준`;
-    } else if (lang === 'ja') {
-      return `${year}年${month}月${day}日 ${hour}:${minute} 現在`;
+      return `${year}년 ${month}월 ${day}일 ${hour}:${minute} KST 기준`;
+    } else if (lang === 'zh') {
+      return `${year}年${month}月${day}日 ${hour}:${minute} KST`;
     } else {
       return `Updated ${year}-${month}-${day} ${hour}:${minute} KST`;
     }
-  };
-
-  // Compute the next update time based on PRO or FREE tier
-  const getNextUpdateMessage = () => {
-    // Current KST time
-    const nowUTC = new Date();
-    const nowKSTMs = nowUTC.getTime() + 9 * 60 * 60 * 1000;
-    const nowKST = new Date(nowKSTMs);
-    const kstHour = nowKST.getUTCHours();
-    const intervalHours = isProMode ? 2 : 4;
-    const nextSlot = (Math.floor(kstHour / intervalHours) + 1) * intervalHours;
-    const nextHour = nextSlot % 24;
-
-    if (lang === 'ko') return `다음 업데이트: ${String(nextHour).padStart(2, '0')}:00 (KST) · ${isProMode ? 'PRO 2시간' : '무료 4시간'} 주기`;
-    if (lang === 'ja') return `次の更新: ${String(nextHour).padStart(2, '0')}:00 (KST) · ${isProMode ? 'PRO 2時間' : '無料 4時間'}周期`;
-    return `Next update: ${String(nextHour).padStart(2, '0')}:00 KST · ${isProMode ? 'PRO 2hr' : 'Free 4hr'} cycle`;
   };
 
   useEffect(() => {
@@ -145,20 +200,38 @@ const App: React.FC = () => {
 
     fetch(`${R2_URL}/data/mood.json`)
       .then(res => res.json())
-      .then(data => {
-        setMoodData(data);
-        if (data.KR) {
-          setSelectedCountry(data.KR);
+      .then((data: Record<string, Record<string, unknown>>) => {
+        const normalized: Record<string, MoodData> = {};
+        for (const [code, raw] of Object.entries(data)) {
+          // Only include tracked countries
+          if (['KR', 'CN', 'RU', 'US', 'UK'].includes(code)) {
+            normalized[code] = normalizeCountryData(code, raw);
+          }
+        }
+        setMoodData(normalized);
+        if (normalized.KR) {
+          setSelectedCountry(normalized.KR);
         }
       })
       .catch(err => {
         console.warn("Using mock data as backup:", err);
       });
 
+    // Fetch all tech news
     fetch(`${R2_URL}/data/google-news.json`)
       .then(res => res.json())
       .then(data => setGoogleNews(data))
       .catch(() => console.warn("Google news not available"));
+
+    fetch(`${R2_URL}/data/elonmusk-news.json`)
+      .then(res => res.json())
+      .then(data => setElonMuskNews(data))
+      .catch(() => console.warn("Elon Musk news not available"));
+
+    fetch(`${R2_URL}/data/nvidia-news.json`)
+      .then(res => res.json())
+      .then(data => setNvidiaNews(data))
+      .catch(() => console.warn("NVIDIA news not available"));
   }, []);
 
   useEffect(() => {
@@ -177,15 +250,26 @@ const App: React.FC = () => {
     }
   };
 
-  const handleProClick = () => {
-    setIsProMode(prev => !prev);
-  };
-
   const countries = Object.keys(moodData);
 
-  // Get localized mood label
   const getMoodLabel = (mood: string) => {
     return moodLabels[mood]?.[lang] ?? mood;
+  };
+
+  // Get the currently active tech news for the modal
+  const getActiveTechNews = (): TechNewsData | null => {
+    switch (activeTechTab) {
+      case 'google': return googleNews;
+      case 'elonmusk': return elonMuskNews;
+      case 'nvidia': return nvidiaNews;
+      default: return null;
+    }
+  };
+
+  const techTabLabels: Record<string, Record<Language, string>> = {
+    google: { en: 'Google', ko: 'Google', zh: 'Google' },
+    elonmusk: { en: 'Elon Musk', ko: 'Elon Musk', zh: 'Elon Musk' },
+    nvidia: { en: 'NVIDIA', ko: 'NVIDIA', zh: 'NVIDIA' },
   };
 
   return (
@@ -217,7 +301,7 @@ const App: React.FC = () => {
 
         <div className="header-actions">
           <div className="dropdown">
-            <button className="green-btn" onClick={() => setLang(lang === 'ko' ? 'en' : lang === 'en' ? 'ja' : 'ko')}>
+            <button className="green-btn" onClick={() => setLang(lang === 'ko' ? 'en' : lang === 'en' ? 'zh' : 'ko')}>
               <Languages size={18} /> <span>{lang.toUpperCase()}</span>
             </button>
           </div>
@@ -278,22 +362,6 @@ const App: React.FC = () => {
               <span key={topic}>#{topic.replace(/^#+/, '')}</span>
             ))}
           </div>
-
-          {/* Google Corporate News Box */}
-          {googleNews && googleNews.translations[lang] && (
-            <div className="google-news-box glass">
-              <div className="box-header">
-                <span className="source">{googleNews.translations[lang].title}</span>
-                <span className="sentiment-tag" style={{ color: '#FDC830' }}>{googleNews.sentiment}</span>
-              </div>
-              <ul className="news-list">
-                {googleNews.translations[lang].headlines.map((hl, i) => (
-                  <li key={i}>{hl}</li>
-                ))}
-              </ul>
-              <div className="update-marker">{googleNews.translations[lang].footer}</div>
-            </div>
-          )}
         </motion.div>
       </div>
 
@@ -306,8 +374,6 @@ const App: React.FC = () => {
         </div>
       </div>
 
-
-
       {/* Floating Buttons */}
       <div className={`floating-actions ${isSidebarOpen ? 'shifted' : ''}`}>
         <button className="action-btn week-btn" onClick={() => setIsTimelineOpen(true)}>
@@ -315,21 +381,13 @@ const App: React.FC = () => {
           <span>{t.weekInWords}</span>
         </button>
         <button
-          className={`action-btn pro-btn ${isProMode ? 'pro-active' : ''}`}
-          onClick={handleProClick}
+          className="action-btn tech-news-btn"
+          onClick={() => setIsTechNewsOpen(true)}
         >
-          <ArrowUpRight size={20} />
-          <span>{isProMode ? (lang === 'ko' ? '■ PRO 활성' : lang === 'ja' ? '■ PRO 有効' : '■ PRO ACTIVE') : t.proMode}</span>
+          <Newspaper size={20} />
+          <span>BIG TECH NEWS</span>
         </button>
       </div>
-
-      {/* PRO Mode badge */}
-      {isProMode && (
-        <div className={`pro-badge glass ${isSidebarOpen ? 'shifted' : ''}`}>
-          <span>⚡ PRO</span>
-          <span className="pro-badge-detail">{getNextUpdateMessage()}</span>
-        </div>
-      )}
 
       {/* Sidebar Details */}
       <AnimatePresence>
@@ -394,13 +452,13 @@ const App: React.FC = () => {
               </div>
               <div className="timeline-grid">
                 {[
-                  { day: lang === 'ko' ? '6일전' : lang === 'ja' ? '6日前' : '6d ago', words: lang === 'ko' ? ['긴장', '금리', '무역'] : ['Conflict', 'Rates', 'Trade'], isCurrent: false },
-                  { day: lang === 'ko' ? '5일전' : lang === 'ja' ? '5日前' : '5d ago', words: lang === 'ko' ? ['탐욕', '상승', '호재'] : ['Greed', 'Rise', 'Bullish'], isCurrent: false },
-                  { day: lang === 'ko' ? '4일전' : lang === 'ja' ? '4日前' : '4d ago', words: lang === 'ko' ? ['혁신', 'AI', '발표'] : ['Innovation', 'AI', 'Launch'], isCurrent: false },
-                  { day: lang === 'ko' ? '3일전' : lang === 'ja' ? '3日前' : '3d ago', words: lang === 'ko' ? ['패닉', '하락', '매도'] : ['Panic', 'Drop', 'Sell'], isCurrent: false },
-                  { day: lang === 'ko' ? '그제' : lang === 'ja' ? '一昨日' : '2d ago', words: lang === 'ko' ? ['안정', '균형', '유지'] : ['Calm', 'Balance', 'Steady'], isCurrent: false },
-                  { day: lang === 'ko' ? '어제' : lang === 'ja' ? '昨日' : '1d ago', words: lang === 'ko' ? ['안정', '회복', '지표'] : ['Calm', 'Recovery', 'Index'], isCurrent: false },
-                  { day: lang === 'ko' ? '오늘' : lang === 'ja' ? '今日' : 'Today', words: [langMood.word, ...langMood.subTopics.slice(0, 2)], isCurrent: true },
+                  { day: lang === 'ko' ? '6일전' : lang === 'zh' ? '6天前' : '6d ago', words: lang === 'ko' ? ['긴장', '금리', '무역'] : ['Conflict', 'Rates', 'Trade'], isCurrent: false },
+                  { day: lang === 'ko' ? '5일전' : lang === 'zh' ? '5天前' : '5d ago', words: lang === 'ko' ? ['탐욕', '상승', '호재'] : ['Greed', 'Rise', 'Bullish'], isCurrent: false },
+                  { day: lang === 'ko' ? '4일전' : lang === 'zh' ? '4天前' : '4d ago', words: lang === 'ko' ? ['혁신', 'AI', '발표'] : ['Innovation', 'AI', 'Launch'], isCurrent: false },
+                  { day: lang === 'ko' ? '3일전' : lang === 'zh' ? '3天前' : '3d ago', words: lang === 'ko' ? ['패닉', '하락', '매도'] : ['Panic', 'Drop', 'Sell'], isCurrent: false },
+                  { day: lang === 'ko' ? '그제' : lang === 'zh' ? '前天' : '2d ago', words: lang === 'ko' ? ['안정', '균형', '유지'] : ['Calm', 'Balance', 'Steady'], isCurrent: false },
+                  { day: lang === 'ko' ? '어제' : lang === 'zh' ? '昨天' : '1d ago', words: lang === 'ko' ? ['안정', '회복', '지표'] : ['Calm', 'Recovery', 'Index'], isCurrent: false },
+                  { day: lang === 'ko' ? '오늘' : lang === 'zh' ? '今天' : 'Today', words: [langMood.word, ...langMood.subTopics.slice(0, 2)], isCurrent: true },
                 ].map(({ day, words, isCurrent }) => (
                   <div key={day} className="timeline-item">
                     <span className="day" style={isCurrent ? { color: selectedCountry.color, opacity: 1 } : {}}>{day}</span>
@@ -417,6 +475,68 @@ const App: React.FC = () => {
                     </div>
                   </div>
                 ))}
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
+
+      {/* BIG TECH NEWS Modal */}
+      <AnimatePresence>
+        {isTechNewsOpen && (
+          <div className="modal-overlay" onClick={() => setIsTechNewsOpen(false)}>
+            <motion.div
+              className="tech-news-modal glass"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              onClick={e => e.stopPropagation()}
+            >
+              <div className="modal-header">
+                <h3>BIG TECH NEWS</h3>
+                <button onClick={() => setIsTechNewsOpen(false)}><X size={24} /></button>
+              </div>
+
+              {/* Tabs */}
+              <div className="tech-tabs">
+                {(['google', 'elonmusk', 'nvidia'] as const).map(tab => (
+                  <button
+                    key={tab}
+                    className={`tech-tab ${activeTechTab === tab ? 'active' : ''}`}
+                    onClick={() => setActiveTechTab(tab)}
+                  >
+                    {techTabLabels[tab][lang]}
+                  </button>
+                ))}
+              </div>
+
+              {/* Content */}
+              <div className="tech-news-content">
+                {(() => {
+                  const news = getActiveTechNews();
+                  if (!news || !news.translations?.[lang]) {
+                    return (
+                      <div className="tech-no-data">
+                        <p>{lang === 'ko' ? '데이터를 불러오는 중...' : lang === 'zh' ? '正在加载数据...' : 'Loading data...'}</p>
+                      </div>
+                    );
+                  }
+                  const t = news.translations[lang];
+                  return (
+                    <>
+                      <div className="tech-news-header">
+                        <span className="tech-source">{t.title}</span>
+                        <span className="tech-sentiment" style={{ color: '#FDC830' }}>{news.sentiment}</span>
+                      </div>
+                      <ul className="tech-news-list">
+                        {t.headlines.map((hl, i) => (
+                          <li key={i}>{hl}</li>
+                        ))}
+                      </ul>
+                      <div className="tech-footer">{t.footer}</div>
+                    </>
+                  );
+                })()}
               </div>
             </motion.div>
           </div>
@@ -581,58 +701,6 @@ const App: React.FC = () => {
           white-space: nowrap;
         }
 
-        .google-news-box {
-          margin-top: 30px;
-          padding: 20px;
-          border-radius: 16px;
-          max-width: 350px;
-          background: rgba(255,255,255,0.03);
-          border: 1px solid rgba(255,255,255,0.08);
-        }
-        .google-news-box .box-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 12px;
-        }
-        .google-news-box .source {
-          font-size: 10px;
-          font-weight: 800;
-          letter-spacing: 1px;
-          opacity: 0.6;
-        }
-        .google-news-box .sentiment-tag {
-          font-size: 10px;
-          font-weight: 950;
-        }
-        .google-news-box .news-list {
-          list-style: none;
-          padding: 0;
-          margin: 0;
-          display: flex;
-          flex-direction: column;
-          gap: 8px;
-        }
-        .google-news-box .news-list li {
-          font-size: 12px;
-          line-height: 1.4;
-          opacity: 0.8;
-          position: relative;
-          padding-left: 12px;
-        }
-        .google-news-box .news-list li::before {
-          content: '•';
-          position: absolute;
-          left: 0;
-          color: #FDC830;
-        }
-        .google-news-box .update-marker {
-          margin-top: 12px;
-          font-size: 9px;
-          opacity: 0.4;
-          font-weight: 600;
-        }
-
         .words-stack {
           display: flex;
           flex-direction: column;
@@ -674,46 +742,16 @@ const App: React.FC = () => {
           transform: scale(1.04);
           box-shadow: 0 0 22px rgba(0,242,96,0.7);
         }
-        .pro-btn {
-          background: #FDC830 !important;
-          color: black !important;
+        .tech-news-btn {
+          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+          color: white !important;
           border: none;
           transition: transform 0.2s, box-shadow 0.2s;
+          box-shadow: 0 0 14px rgba(102,126,234,0.4);
         }
-        .pro-btn:hover {
+        .tech-news-btn:hover {
           transform: scale(1.04);
-          box-shadow: 0 0 18px rgba(253,200,48,0.6);
-        }
-        .pro-active {
-          background: linear-gradient(135deg, #FDC830, #F37335) !important;
-          color: white !important;
-          box-shadow: 0 0 18px rgba(253,200,48,0.6);
-        }
-
-        .pro-badge {
-          position: fixed;
-          top: 100px;
-          right: 40px;
-          padding: 8px 18px;
-          border-radius: 16px;
-          z-index: 100;
-          display: flex;
-          flex-direction: column;
-          gap: 4px;
-          border: 1px solid rgba(253,200,48,0.4);
-          transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .pro-badge.shifted {
-          right: 560px;
-        }
-        .pro-badge span:first-child {
-          font-size: 12px;
-          font-weight: 800;
-          color: #FDC830;
-        }
-        .pro-badge-detail {
-          font-size: 10px;
-          opacity: 0.6;
+          box-shadow: 0 0 22px rgba(102,126,234,0.7);
         }
 
         .bpm-box {
@@ -745,7 +783,7 @@ const App: React.FC = () => {
           letter-spacing: 1px;
         }
 
-        /* Sidebar: wider and cleaner layout */
+        /* Sidebar */
         .sidebar-panel {
           position: fixed;
           right: 40px;
@@ -998,7 +1036,111 @@ const App: React.FC = () => {
         .word-bubble:hover {
           transform: scale(1.05);
         }
-        
+
+        /* BIG TECH NEWS Modal */
+        .tech-news-modal {
+          width: 90%;
+          max-width: 700px;
+          padding: 40px;
+          border-radius: 30px;
+          max-height: 80vh;
+          overflow-y: auto;
+        }
+        .tech-tabs {
+          display: flex;
+          gap: 8px;
+          margin-bottom: 24px;
+          background: rgba(255,255,255,0.05);
+          padding: 4px;
+          border-radius: 16px;
+        }
+        .tech-tab {
+          flex: 1;
+          padding: 10px 16px;
+          border-radius: 12px;
+          font-size: 13px;
+          font-weight: 700;
+          color: rgba(255,255,255,0.5);
+          transition: all 0.2s;
+          border: none;
+          background: transparent;
+          cursor: pointer;
+        }
+        .tech-tab.active {
+          background: linear-gradient(135deg, #667eea, #764ba2);
+          color: white;
+          box-shadow: 0 4px 12px rgba(102,126,234,0.3);
+        }
+        .tech-tab:hover:not(.active) {
+          color: rgba(255,255,255,0.8);
+        }
+        .light-mode .tech-tab {
+          color: rgba(0,0,0,0.4);
+        }
+        .light-mode .tech-tab.active {
+          color: white;
+        }
+        .tech-news-content {
+          min-height: 200px;
+        }
+        .tech-news-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 16px;
+        }
+        .tech-source {
+          font-size: 11px;
+          font-weight: 800;
+          letter-spacing: 1.5px;
+          opacity: 0.6;
+          text-transform: uppercase;
+        }
+        .tech-sentiment {
+          font-size: 11px;
+          font-weight: 950;
+        }
+        .tech-news-list {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          display: flex;
+          flex-direction: column;
+          gap: 14px;
+        }
+        .tech-news-list li {
+          font-size: 14px;
+          line-height: 1.6;
+          opacity: 0.85;
+          position: relative;
+          padding-left: 16px;
+          padding: 14px 14px 14px 28px;
+          background: rgba(255,255,255,0.03);
+          border-radius: 12px;
+          border: 1px solid rgba(255,255,255,0.06);
+        }
+        .tech-news-list li::before {
+          content: '•';
+          position: absolute;
+          left: 12px;
+          color: #667eea;
+          font-weight: bold;
+        }
+        .tech-footer {
+          margin-top: 16px;
+          font-size: 10px;
+          opacity: 0.4;
+          font-weight: 600;
+        }
+        .tech-no-data {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 200px;
+          opacity: 0.5;
+          font-style: italic;
+        }
+
         .footer-hits {
           position: fixed;
           bottom: 10px;
@@ -1022,7 +1164,8 @@ const App: React.FC = () => {
         .light-mode .modal-overlay {
           background: rgba(255, 255, 255, 0.8);
         }
-        .light-mode .timeline-modal {
+        .light-mode .timeline-modal,
+        .light-mode .tech-news-modal {
           background: rgba(255, 255, 255, 0.9);
           border: 1px solid rgba(0,0,0,0.1);
         }

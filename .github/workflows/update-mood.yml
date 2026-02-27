@@ -32,7 +32,7 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.PULSE_API }}
         run: node scripts/analyze-mood.cjs
 
-      - name: Run Google Corp News Update
+      - name: Run Big Tech News Update (Google, Elon Musk, NVIDIA)
         env:
           GEMINI_API_KEY: ${{ secrets.PULSE_API }}
         run: node scripts/fetch-google-corp-news.cjs
