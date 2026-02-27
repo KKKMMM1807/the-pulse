@@ -5,19 +5,30 @@ const fetch = require('node-fetch');
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`;
 
+// ===================================================================
+// Gemini 2.0 Flash Free Tier Limits (as of 2026):
+//   - RPM  (Requests Per Minute):    15
+//   - RPD  (Requests Per Day):       1,500
+//   - TPM  (Tokens Per Minute):      1,000,000
+//   - Cooldown:                      ~60s after exhaustion
+//
+// With 5 countries + 1 Google news = 6 requests per run,
+// and 5 runs/day = 30 requests/day → well within 1,500 RPD.
+// With 65s interval between requests, max ~1 request/min → safe for RPM.
+// ===================================================================
+
 const COUNTRIES = {
     KR: { name: 'South Korea', url: 'https://news.google.com/rss?ceid=KR:ko&hl=ko' },
-    US: { name: 'United States', url: 'https://news.google.com/rss?ceid=US:en&hl=en-US' },
-    JP: { name: 'Japan', url: 'https://news.google.com/rss?ceid=JP:ja&hl=ja' },
     CN: { name: 'China', url: 'https://news.google.com/rss?ceid=CN:zh-Hans&hl=zh-Hans' },
-    UK: { name: 'United Kingdom', url: 'https://news.google.com/rss?ceid=GB:en&hl=en-GB' },
     RU: { name: 'Russia', url: 'https://news.google.com/rss?ceid=RU:ru&hl=ru' },
-    DE: { name: 'Germany', url: 'https://news.google.com/rss?ceid=DE:de&hl=de' },
-    FR: { name: 'France', url: 'https://news.google.com/rss?ceid=FR:fr&hl=fr' }
+    US: { name: 'United States', url: 'https://news.google.com/rss?ceid=US:en&hl=en-US' },
+    UK: { name: 'United Kingdom', url: 'https://news.google.com/rss?ceid=GB:en&hl=en-GB' }
 };
 
-const SLEEP_MS = 15000; // 기본적으로 한도에 안 걸리게 15초 간격으로 요청
-const MAX_RETRIES = 5; // rate limit 대기를 위해 리트라이 횟수를 늘림
+// 65초 대기 → 분당 최대 ~0.9 요청 (RPM 15 한도에 매우 안전)
+const SLEEP_BETWEEN_COUNTRIES_MS = 65000;
+const MAX_RETRIES = 3;
+const MAX_HEADLINES = 15; // 토큰 수 절약을 위해 15개로 제한
 
 async function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -30,10 +41,9 @@ async function fetchHeadlines(url) {
         const headlines = [];
         const items = text.match(/<item>([\s\S]*?)<\/item>/g) || [];
 
-        for (const item of items.slice(0, 25)) {
+        for (const item of items.slice(0, MAX_HEADLINES)) {
             const titleMatch = item.match(/<title>(.*?)<\/title>/);
             if (titleMatch) {
-                // Remove source name from title (e.g., "Headline - Source")
                 const fullTitle = titleMatch[1].replace(/<!\[CDATA\[(.*?)\]\]>/g, '$1');
                 const cleanTitle = fullTitle.split(' - ')[0];
                 headlines.push(cleanTitle);
@@ -69,7 +79,6 @@ async function analyzeWithGemini(countryName, headlines, retryCount = 0) {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 contents: [{ parts: [{ text: prompt }] }]
-                // Removed generationConfig to avoid 400 errors
             })
         });
 
@@ -93,19 +102,21 @@ async function analyzeWithGemini(countryName, headlines, retryCount = 0) {
     } catch (error) {
         console.error(`Attempt ${retryCount + 1} failed for ${countryName}: ${error.message}`);
         if (retryCount < MAX_RETRIES - 1) {
-            let waitTime = 2000;
+            let waitTime;
             if (error.message.includes('429') || error.message.includes('Quota') || error.message.includes('RESOURCE_EXHAUSTED')) {
+                // Rate limit: API가 알려주는 대기 시간을 파싱하거나, 기본 70초 대기
                 let retryDelayMatch = error.message.match(/"retryDelay":\s*"(\d+)s"/);
                 if (retryDelayMatch && retryDelayMatch[1]) {
                     const delaySec = parseInt(retryDelayMatch[1], 10);
-                    waitTime = (delaySec + 2) * 1000; // 요청된 대기 시간보다 2초 더 여유롭게 대기
-                    console.log(`Rate limit exceeded. According to API, waiting ${delaySec + 2} seconds to reset...`);
+                    waitTime = (delaySec + 5) * 1000; // API 제안 + 5초 여유
+                    console.log(`⏳ Rate limit hit. Waiting ${delaySec + 5}s as suggested by API...`);
                 } else {
-                    waitTime = 60000; // 명시된 대기시간이 없으면 무조건 60초 대기
-                    console.log(`Rate limit exceeded. Waiting 60 seconds to reset...`);
+                    waitTime = 70000; // 기본 70초 (쿨다운 주기 ~60초 + 여유)
+                    console.log(`⏳ Rate limit hit. Waiting 70s for cooldown...`);
                 }
             } else {
-                console.log(`Retrying in 2 seconds...`);
+                waitTime = 5000;
+                console.log(`Retrying in 5 seconds...`);
             }
             await sleep(waitTime);
             return analyzeWithGemini(countryName, headlines, retryCount + 1);
@@ -128,36 +139,51 @@ async function run() {
         }
     }
 
-    const results = { ...existingMoodData }; // Preserve existing data by default
+    const results = { ...existingMoodData };
 
     const nowUTC = new Date();
     // KST is UTC+9
     const nowKST = new Date(nowUTC.getTime() + 9 * 60 * 60 * 1000);
+
+    // 스케줄 시간 목록 (KST): 0, 8, 12, 16, 20
+    const scheduleHours = [0, 8, 12, 16, 20];
     const kstHour = nowKST.getHours();
-    const alignedHour = Math.floor(kstHour / 2) * 2;
+
+    // 현재 시간에서 가장 가까운 스케줄 시간 찾기
+    let alignedHour = scheduleHours[0];
+    for (const h of scheduleHours) {
+        if (kstHour >= h) alignedHour = h;
+    }
 
     const kstDate = nowKST.toISOString().split('T')[0]; // YYYY-MM-DD
     const updatedAtDate = new Date(nowKST);
     updatedAtDate.setHours(alignedHour, 0, 0, 0);
     const updatedAtISO = updatedAtDate.toISOString();
 
-    // Valid filename date string: 2026-02-25T10-00-00
     const dateStr = `${kstDate}T${String(alignedHour).padStart(2, '0')}-00-00`;
 
+    console.log(`========================================`);
+    console.log(`📡 The Pulse - Mood Analysis`);
+    console.log(`========================================`);
     console.log(`Current Time (KST): ${nowKST.toLocaleString()}`);
-    console.log(`Aligned Hour: ${alignedHour}:00`);
+    console.log(`Aligned Hour: ${alignedHour}:00 KST`);
+    console.log(`Countries: ${Object.keys(COUNTRIES).join(', ')} (${Object.keys(COUNTRIES).length} total)`);
     console.log(`Update Timestamp: ${updatedAtISO}`);
+    console.log(`========================================\n`);
 
-    for (const [code, info] of Object.entries(COUNTRIES)) {
-        console.log(`\nProcessing ${info.name} (${code})...`);
+    const countryEntries = Object.entries(COUNTRIES);
+
+    for (let i = 0; i < countryEntries.length; i++) {
+        const [code, info] = countryEntries[i];
+        console.log(`\n[${i + 1}/${countryEntries.length}] Processing ${info.name} (${code})...`);
         try {
             const headlines = await fetchHeadlines(info.url);
             if (headlines.length === 0) {
-                console.log(`No headlines found for ${code}. Skipping.`);
+                console.log(`⚠️  No headlines found for ${code}. Skipping.`);
                 continue;
             }
 
-            console.log(`Fetched ${headlines.length} headlines. Analyzing with Gemini...`);
+            console.log(`📰 Fetched ${headlines.length} headlines. Analyzing with Gemini...`);
             const aiResult = await analyzeWithGemini(info.name, headlines);
 
             const finalData = {
@@ -174,24 +200,30 @@ async function run() {
             // Save historical JSON with timestamp
             fs.writeFileSync(path.join(dataPath, `${code}_${dateStr}Z.json`), JSON.stringify(finalData, null, 2));
 
-            console.log(`Successfully analyzed ${code}. Waiting 5 seconds for rate limits...`);
-            await sleep(SLEEP_MS);
+            console.log(`✅ Successfully analyzed ${code}.`);
+
+            // 마지막 국가가 아니면 65초 대기 (RPM 제한 방지)
+            if (i < countryEntries.length - 1) {
+                console.log(`⏳ Waiting ${SLEEP_BETWEEN_COUNTRIES_MS / 1000}s before next country (rate limit safety)...`);
+                await sleep(SLEEP_BETWEEN_COUNTRIES_MS);
+            }
 
         } catch (error) {
-            console.error(`Failed to process ${code} after retries:`, error);
-            console.log(`Fallback: Keeping previous data for ${code}.`);
-            // results[code] already contains existingMoodData[code] from the spread at start
-            process.exitCode = 1; // 깃허브 액션에서 ❌ 오류가 뜨도록 설정
+            console.error(`❌ Failed to process ${code} after retries:`, error.message);
+            console.log(`↩️  Keeping previous data for ${code}.`);
         }
     }
 
     // Save combined latest JSON
     fs.writeFileSync(moodJsonPath, JSON.stringify(results, null, 2));
-    console.log('\nAll countries processed. Generated mood.json successfully.');
+    console.log('\n========================================');
+    console.log('✅ All countries processed. mood.json updated.');
+    console.log('========================================');
 }
 
 if (!GEMINI_API_KEY) {
-    console.warn("⚠️  GEMINI_API_KEY environment variable is missing. The script will fail when making API calls.");
+    console.error("❌ GEMINI_API_KEY environment variable is missing. Exiting.");
+    process.exit(1);
 }
 
 run().catch(err => {

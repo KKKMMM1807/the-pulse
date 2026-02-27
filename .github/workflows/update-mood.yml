@@ -1,7 +1,12 @@
 name: Update Global Moods
 on:
   schedule:
-    - cron: '0 */2 * * *' # Every 2 hours
+    # KST 08:00 = UTC 23:00 (전날)
+    # KST 12:00 = UTC 03:00
+    # KST 16:00 = UTC 07:00
+    # KST 20:00 = UTC 11:00
+    # KST 00:00 = UTC 15:00
+    - cron: '0 23,3,7,11,15 * * *'
   workflow_dispatch:
 
 jobs:
@@ -24,27 +29,21 @@ jobs:
 
       - name: Run Mood Analysis
         env:
-          GEMINI_API_KEY: ${{ secrets.PULSE_API || secrets.GEMINI_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.PULSE_API }}
         run: node scripts/analyze-mood.cjs
 
       - name: Run Google Corp News Update
         env:
-          GEMINI_API_KEY: ${{ secrets.PULSE_API || secrets.GEMINI_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.PULSE_API }}
         run: node scripts/fetch-google-corp-news.cjs
 
-      - name: Auto Commit Data to GitHub
+      - name: Install AWS CLI
         run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add public/data/
-          git commit -m 'chore: daily data archive [skip ci]' || echo "No changes to commit"
-          git push
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq awscli
 
       - name: Sync data to Cloudflare R2
         run: |
-          # Now it safe to use --delete because local data is synced with history
           aws s3 sync public/data/ s3://thepulse/data/ --endpoint-url ${{ secrets.R2_ENDPOINT }} --region auto --delete
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
